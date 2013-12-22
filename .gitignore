@@ -11,8 +11,10 @@ SlowRoll/.DS_Store
 # Project files
 SlowRoll.xcodeproj/xcuserdata/*
 SlowRoll.xcodeproj/project.xcworkspace/xcuserdata/*
+SlowRoll.xcodeproj/project.pbxproj
 SlowRoll.xcworkspace/xcuserdata/*
 SlowRoll.xcworkspace/xcshareddata/*.xccheckout
+SlowRoll.xcodeproj/project.xcworkspace/xcuserdata/Michael.xcuserdatad/UserInterfaceState.xcuserstate
 
 # CocoaPods
 Pods
