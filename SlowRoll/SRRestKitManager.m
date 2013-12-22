@@ -18,6 +18,7 @@ static NSString *baseURLString = @"localhost:9000/";
 {
     // create object manager
     RKObjectManager *manager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:baseURLString]];
+    
     NSLog(@"%@",[RKObjectManager sharedManager].baseURL);
     
     // integrate RestKit with Core Data
@@ -28,7 +29,7 @@ static NSString *baseURLString = @"localhost:9000/";
     if (! success) {
         RKLogError(@"Failed to create Application Data Directory at path '%@': %@", RKApplicationDataDirectory(), error);
     }
-    NSString *path = [RKApplicationDataDirectory() stringByAppendingPathComponent:@"Store.sqlite"];
+    NSString *path = [RKApplicationDataDirectory() stringByAppendingPathComponent:@"SlowRoll.sqlite"];
     NSPersistentStore *persistentStore = [managedObjectStore addSQLitePersistentStoreAtPath:path fromSeedDatabaseAtPath:nil withConfiguration:nil options:nil error:&error];
     if (! persistentStore) {
         RKLogError(@"Failed adding persistent store at path '%@': %@", path, error);
@@ -55,7 +56,8 @@ static NSString *baseURLString = @"localhost:9000/";
 #pragma mark - mappings
 + (RKEntityMapping *)mappingForSRCameraRoll
 {
-    RKEntityMapping *mapping = [RKEntityMapping mappingForClass:[NSObject class]];
+    RKManagedObjectStore *managedObjectStore = [RKObjectManager sharedManager].managedObjectStore;
+    RKEntityMapping *mapping = [RKEntityMapping mappingForEntityForName:@"SRCameraRoll" inManagedObjectStore:managedObjectStore];
     [mapping addAttributeMappingsFromDictionary:@{@"roll_id" : @"rollID",
                                                   @"max_photos" : @"maxPhotos",
                                                   @"unused_photos" : @"unusedPhotos"}];
@@ -66,7 +68,8 @@ static NSString *baseURLString = @"localhost:9000/";
 
 + (RKEntityMapping *)mappingForSRRollParticipant
 {
-    RKEntityMapping *mapping = [RKEntityMapping mappingForClass:[NSObject class]];
+    RKManagedObjectStore *managedObjectStore = [RKObjectManager sharedManager].managedObjectStore;
+    RKEntityMapping *mapping = [RKEntityMapping mappingForEntityForName:@"SRRollParticipant" inManagedObjectStore:managedObjectStore];
     [mapping addAttributeMappingsFromDictionary:@{@"participant_id" : @"participantID",
                                                   @"display_name" : @"displayName",
                                                   @"max_photos" : @"maxPhotos",
@@ -79,7 +82,8 @@ static NSString *baseURLString = @"localhost:9000/";
 
 + (RKEntityMapping *)mappingForSRPurchaseOrder
 {
-    RKEntityMapping *mapping = [RKEntityMapping mappingForClass:[NSObject class]];
+    RKManagedObjectStore *managedObjectStore = [RKObjectManager sharedManager].managedObjectStore;
+    RKEntityMapping *mapping = [RKEntityMapping mappingForEntityForName:@"SRPurchaseOrder" inManagedObjectStore:managedObjectStore];
     [mapping addAttributeMappingsFromDictionary:@{@"print_type" : @"printType",
                                                   @"state" : @"state",
                                                   @"user_id" : @"userID"}];
