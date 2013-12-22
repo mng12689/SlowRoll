@@ -76,7 +76,10 @@ static NSString *baseURLString = @"localhost:9000/";
                                                   @"unused_photos" : @"unusedPhotos",
                                                   @"user_id" : @"user_id"}];
     
-    [mapping addRelationshipMappingWithSourceKeyPath:@"cameraRoll" mapping:[SRRestKitManager mappingForSRCameraRoll]];
+    NSEntityDescription *rollParticipantEntity = [NSEntityDescription entityForName:@"SRRollParticipant" inManagedObjectContext:[[[RKObjectManager sharedManager] managedObjectStore] mainQueueManagedObjectContext]];
+    NSRelationshipDescription *cameraRollRelationship = [rollParticipantEntity relationshipsByName][@"cameraRoll"];
+    RKConnectionDescription *connection = [[RKConnectionDescription alloc] initWithRelationship:cameraRollRelationship attributes:@{@"rollID": @"rollID"}];
+    [mapping addConnection:connection];
     return mapping;
 }
 
