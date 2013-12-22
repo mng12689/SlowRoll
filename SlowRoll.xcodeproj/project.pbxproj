@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		4C36706818673FD100BDC5F5 /* SRRestKitManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C36706718673FD100BDC5F5 /* SRRestKitManager.m */; };
-		4C36706C186741E700BDC5F5 /* SRAPICommons.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C36706B186741E700BDC5F5 /* SRAPICommons.m */; };
 		4C685B141866286400ED860D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C685B131866286400ED860D /* Foundation.framework */; };
 		4C685B161866286400ED860D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C685B151866286400ED860D /* CoreGraphics.framework */; };
 		4C685B181866286400ED860D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C685B171866286400ED860D /* UIKit.framework */; };
@@ -41,8 +40,6 @@
 		3201D1097F014222AAAFA51F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C36706618673FD100BDC5F5 /* SRRestKitManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRRestKitManager.h; sourceTree = "<group>"; };
 		4C36706718673FD100BDC5F5 /* SRRestKitManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRRestKitManager.m; sourceTree = "<group>"; };
-		4C36706A186741E700BDC5F5 /* SRAPICommons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRAPICommons.h; sourceTree = "<group>"; };
-		4C36706B186741E700BDC5F5 /* SRAPICommons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRAPICommons.m; sourceTree = "<group>"; };
 		4C685B101866286400ED860D /* SlowRoll.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SlowRoll.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C685B131866286400ED860D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4C685B151866286400ED860D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -112,8 +109,6 @@
 			isa = PBXGroup;
 			children = (
 				4C36706518673FA200BDC5F5 /* RestKit Integration */,
-				4C36706A186741E700BDC5F5 /* SRAPICommons.h */,
-				4C36706B186741E700BDC5F5 /* SRAPICommons.m */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -326,7 +321,6 @@
 			files = (
 				4C685B221866286500ED860D /* main.m in Sources */,
 				4C685B291866286500ED860D /* SlowRoll.xcdatamodeld in Sources */,
-				4C36706C186741E700BDC5F5 /* SRAPICommons.m in Sources */,
 				4C685B261866286500ED860D /* SRAppDelegate.m in Sources */,
 				4C36706818673FD100BDC5F5 /* SRRestKitManager.m in Sources */,
 			);
