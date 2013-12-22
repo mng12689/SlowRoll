@@ -7,9 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+@class RKEntityMapping;
 
 @interface SRRestKitManager : NSObject
 
 + (void)initializeRestKit;
+
++ (RKEntityMapping *)mappingForSRCameraRoll;
++ (RKEntityMapping *)mappingForSRRollParticipant;
++ (RKEntityMapping *)mappingForSRPurchaseOrder;
 
 @end

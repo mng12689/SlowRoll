@@ -24,4 +24,39 @@ static NSString *baseURLString = @"localhost:9000/";
     manager.managedObjectStore = store;
 }
 
++ (RKEntityMapping *)mappingForSRCameraRoll
+{
+    RKEntityMapping *mapping = [RKEntityMapping mappingForClass:[NSObject class]];
+    [mapping addAttributeMappingsFromDictionary:@{@"roll_id" : @"rollID",
+                                                  @"max_photos" : @"maxPhotos",
+                                                  @"unused_photos" : @"unusedPhotos"}];
+    
+    [mapping addRelationshipMappingWithSourceKeyPath:@"participants" mapping:[SRRestKitManager mappingForSRRollParticipant]];
+    return mapping;
+}
+
++ (RKEntityMapping *)mappingForSRRollParticipant
+{
+    RKEntityMapping *mapping = [RKEntityMapping mappingForClass:[NSObject class]];
+    [mapping addAttributeMappingsFromDictionary:@{@"participant_id" : @"participantID",
+                                                  @"display_name" : @"displayName",
+                                                  @"max_photos" : @"maxPhotos",
+                                                  @"unused_photos" : @"unusedPhotos",
+                                                  @"user_id" : @"user_id"}];
+    
+    [mapping addRelationshipMappingWithSourceKeyPath:@"cameraRoll" mapping:[SRRestKitManager mappingForSRCameraRoll]];
+    return mapping;
+}
+
++ (RKEntityMapping *)mappingForSRPurchaseOrder
+{
+    RKEntityMapping *mapping = [RKEntityMapping mappingForClass:[NSObject class]];
+    [mapping addAttributeMappingsFromDictionary:@{@"print_type" : @"printType",
+                                                  @"state" : @"state",
+                                                  @"user_id" : @"userID"}];
+    
+    [mapping addRelationshipMappingWithSourceKeyPath:@"cameraRoll" mapping:[SRRestKitManager mappingForSRCameraRoll]];
+    return mapping;
+}
+
 @end

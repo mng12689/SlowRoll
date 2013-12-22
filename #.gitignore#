@@ -1,0 +1,34 @@
+# Root level files
+.DS_Store
+.svn
+profile
+*~.nib
+.cshrc
+*.swp
+*~
+SlowRoll/.DS_Store
+
+# Project files
+SlowRoll.xcodeproj/xcuserdata/*
+SlowRoll.xcodeproj/project.xcworkspace/xcuserdata/*
+SlowRoll.xcodeproj/project.pbxproj
+SlowRoll.xcodeproj/project.pbxproj
+SlowRoll.xcworkspace/xcuserdata/*
+SlowRoll.xcworkspace/xcshareddata/*.xccheckout
+SlowRoll.xcodeproj/project.xcworkspace/xcuserdata/Michael.xcuserdatad/UserInterfaceState.xcuserstate
+
+# CocoaPods
+Pods
+
+# Build files
+build/
+Headers/
+*.perspective
+*.perspective3
+*.pbxuser
+*.mode1v3
+*.mode2v3
+
+# Bundler
+.bundle
+bin/
