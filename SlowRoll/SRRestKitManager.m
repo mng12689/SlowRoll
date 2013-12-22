@@ -16,13 +16,37 @@ static NSString *baseURLString = @"localhost:9000/";
 
 + (void)initializeRestKit
 {
+    // create object manager
     RKObjectManager *manager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:baseURLString]];
     NSLog(@"%@",[RKObjectManager sharedManager].baseURL);
     
-    NSManagedObjectModel *mainMOM = [((SRAppDelegate *)[[UIApplication sharedApplication] delegate]) managedObjectModel];
-    RKManagedObjectStore *store = [[RKManagedObjectStore alloc] initWithManagedObjectModel:mainMOM];
-    manager.managedObjectStore = store;
+    // integrate RestKit with Core Data
+    NSManagedObjectModel *managedObjectModel = [NSManagedObjectModel mergedModelFromBundles:nil];
+    RKManagedObjectStore *managedObjectStore = [[RKManagedObjectStore alloc] initWithManagedObjectModel:managedObjectModel];
+    NSError *error;
+    BOOL success = RKEnsureDirectoryExistsAtPath(RKApplicationDataDirectory(), &error);
+    if (! success) {
+        RKLogError(@"Failed to create Application Data Directory at path '%@': %@", RKApplicationDataDirectory(), error);
+    }
+    NSString *path = [RKApplicationDataDirectory() stringByAppendingPathComponent:@"Store.sqlite"];
+    NSPersistentStore *persistentStore = [managedObjectStore addSQLitePersistentStoreAtPath:path fromSeedDatabaseAtPath:nil withConfiguration:nil options:nil error:&error];
+    if (! persistentStore) {
+        RKLogError(@"Failed adding persistent store at path '%@': %@", path, error);
+    }
+    [managedObjectStore createManagedObjectContexts];
+    manager.managedObjectStore = managedObjectStore;
     
+    // add request descriptors for requests
+    [manager addRequestDescriptorsFromArray:[SRRestKitManager requestDescriptorsForSRCameraRoll]];
+    [manager addRequestDescriptorsFromArray:[SRRestKitManager requestDescriptorsForSRRollParticipant]];
+    [manager addRequestDescriptorsFromArray:[SRRestKitManager requestDescriptorsForSRPurchaseOrder]];
+    
+    // add response descriptors for requests
+    [manager addResponseDescriptorsFromArray:[SRRestKitManager responseDescriptorsForSRCameraRoll]];
+    [manager addResponseDescriptorsFromArray:[SRRestKitManager responseDescriptorsForSRRollParticipant]];
+    [manager addResponseDescriptorsFromArray:[SRRestKitManager responseDescriptorsForSRPurchaseOrder]];
+    
+    // add routes for requests
     [manager.router.routeSet addRoutes:[SRRestKitManager routesForSRCameraRoll]];
     [manager.router.routeSet addRoutes:[SRRestKitManager routesForSRPurchaseOrder]];
     [manager.router.routeSet addRoutes:[SRRestKitManager routesForSRRollPartipicant]];
@@ -85,6 +109,76 @@ static NSString *baseURLString = @"localhost:9000/";
     RKRoute *getRoute = [RKRoute routeWithClass:[NSObject class] pathPattern:@"/purchaseOrders/:orderID" method:RKRequestMethodGET];
     RKRoute *postRoute = [RKRoute routeWithClass:[NSObject class] pathPattern:@"purchaseOrders" method:RKRequestMethodPOST];
     return @[getRoute,postRoute];
+}
+
+#pragma mark - request descriptors
++ (NSArray *)requestDescriptorsForSRCameraRoll
+{
+    RKRequestDescriptor *postDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:[SRRestKitManager mappingForSRCameraRoll]
+                                                                                objectClass:[NSObject class]
+                                                                                rootKeyPath:@"cameraRoll"
+                                                                                     method:RKRequestMethodPOST];
+    RKRequestDescriptor *updateDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:[SRRestKitManager mappingForSRCameraRoll]
+                                                                                  objectClass:[NSObject class]
+                                                                                  rootKeyPath:@"cameraRoll"
+                                                                                       method:RKRequestMethodPUT];
+    return @[postDescriptor, updateDescriptor];
+}
+
++ (NSArray *)requestDescriptorsForSRRollParticipant
+{
+    RKRequestDescriptor *postDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:[SRRestKitManager mappingForSRRollParticipant]
+                                                                                objectClass:[NSObject class]
+                                                                                rootKeyPath:@"rollParticipant"
+                                                                                     method:RKRequestMethodPOST];
+    RKRequestDescriptor *updateDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:[SRRestKitManager mappingForSRRollParticipant]
+                                                                                  objectClass:[NSObject class]
+                                                                                  rootKeyPath:@"rollParticipant"
+                                                                                       method:RKRequestMethodPUT];
+    return @[postDescriptor, updateDescriptor];
+}
+
++ (NSArray *)requestDescriptorsForSRPurchaseOrder
+{
+    RKRequestDescriptor *postDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:[SRRestKitManager mappingForSRPurchaseOrder]
+                                                                                objectClass:[NSObject class]
+                                                                                rootKeyPath:@"purchaseOrder"
+                                                                                     method:RKRequestMethodPOST];
+    return @[postDescriptor];
+}
+
+#pragma mark - response descriptors
++ (NSArray *)responseDescriptorsForSRCameraRoll
+{
+    NSIndexSet *statusCodes = RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful); // Anything in 2xx
+    RKResponseDescriptor *descriptor = [RKResponseDescriptor responseDescriptorWithMapping:[SRRestKitManager mappingForSRCameraRoll]
+                                                                                    method:RKRequestMethodAny
+                                                                               pathPattern:nil
+                                                                                   keyPath:nil
+                                                                               statusCodes:statusCodes];
+    return @[descriptor];
+}
+
++ (NSArray *)responseDescriptorsForSRRollParticipant
+{
+    NSIndexSet *statusCodes = RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful); // Anything in 2xx
+    RKResponseDescriptor *descriptor = [RKResponseDescriptor responseDescriptorWithMapping:[SRRestKitManager mappingForSRRollParticipant]
+                                                                                    method:RKRequestMethodAny
+                                                                               pathPattern:nil
+                                                                                   keyPath:nil
+                                                                               statusCodes:statusCodes];
+    return @[descriptor];
+}
+
++ (NSArray *)responseDescriptorsForSRPurchaseOrder
+{
+    NSIndexSet *statusCodes = RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful); // Anything in 2xx
+    RKResponseDescriptor *descriptor = [RKResponseDescriptor responseDescriptorWithMapping:[SRRestKitManager mappingForSRPurchaseOrder]
+                                                                                    method:RKRequestMethodAny
+                                                                               pathPattern:nil
+                                                                                   keyPath:nil
+                                                                               statusCodes:statusCodes];
+    return @[descriptor];
 }
 
 @end
