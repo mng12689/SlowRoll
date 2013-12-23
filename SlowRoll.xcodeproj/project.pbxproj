@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C0A43131867D0EF005EBC18 /* SRCameraRoll.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C0A43121867D0EF005EBC18 /* SRCameraRoll.m */; };
+		4C0A43161867D0F0005EBC18 /* SRPurchaseOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C0A43151867D0F0005EBC18 /* SRPurchaseOrder.m */; };
+		4C0A43191867D0F0005EBC18 /* SRRollParticipant.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C0A43181867D0F0005EBC18 /* SRRollParticipant.m */; };
 		4C36706818673FD100BDC5F5 /* SRRestKitManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C36706718673FD100BDC5F5 /* SRRestKitManager.m */; };
 		4C685B141866286400ED860D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C685B131866286400ED860D /* Foundation.framework */; };
 		4C685B161866286400ED860D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C685B151866286400ED860D /* CoreGraphics.framework */; };
@@ -38,6 +41,13 @@
 
 /* Begin PBXFileReference section */
 		3201D1097F014222AAAFA51F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C0A43101867CC53005EBC18 /* SRNetworkingProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SRNetworkingProtocol.h; sourceTree = "<group>"; };
+		4C0A43111867D0EF005EBC18 /* SRCameraRoll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRCameraRoll.h; sourceTree = "<group>"; };
+		4C0A43121867D0EF005EBC18 /* SRCameraRoll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRCameraRoll.m; sourceTree = "<group>"; };
+		4C0A43141867D0F0005EBC18 /* SRPurchaseOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRPurchaseOrder.h; sourceTree = "<group>"; };
+		4C0A43151867D0F0005EBC18 /* SRPurchaseOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRPurchaseOrder.m; sourceTree = "<group>"; };
+		4C0A43171867D0F0005EBC18 /* SRRollParticipant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRRollParticipant.h; sourceTree = "<group>"; };
+		4C0A43181867D0F0005EBC18 /* SRRollParticipant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRRollParticipant.m; sourceTree = "<group>"; };
 		4C36706618673FD100BDC5F5 /* SRRestKitManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRRestKitManager.h; sourceTree = "<group>"; };
 		4C36706718673FD100BDC5F5 /* SRRestKitManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRRestKitManager.m; sourceTree = "<group>"; };
 		4C685B101866286400ED860D /* SlowRoll.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SlowRoll.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -92,6 +102,12 @@
 			isa = PBXGroup;
 			children = (
 				4C685B271866286500ED860D /* SlowRoll.xcdatamodeld */,
+				4C0A43171867D0F0005EBC18 /* SRRollParticipant.h */,
+				4C0A43181867D0F0005EBC18 /* SRRollParticipant.m */,
+				4C0A43141867D0F0005EBC18 /* SRPurchaseOrder.h */,
+				4C0A43151867D0F0005EBC18 /* SRPurchaseOrder.m */,
+				4C0A43111867D0EF005EBC18 /* SRCameraRoll.h */,
+				4C0A43121867D0EF005EBC18 /* SRCameraRoll.m */,
 			);
 			name = "Core Data";
 			sourceTree = "<group>";
@@ -109,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				4C36706518673FA200BDC5F5 /* RestKit Integration */,
+				4C0A43101867CC53005EBC18 /* SRNetworkingProtocol.h */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -320,8 +337,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C685B221866286500ED860D /* main.m in Sources */,
+				4C0A43131867D0EF005EBC18 /* SRCameraRoll.m in Sources */,
 				4C685B291866286500ED860D /* SlowRoll.xcdatamodeld in Sources */,
 				4C685B261866286500ED860D /* SRAppDelegate.m in Sources */,
+				4C0A43161867D0F0005EBC18 /* SRPurchaseOrder.m in Sources */,
+				4C0A43191867D0F0005EBC18 /* SRRollParticipant.m in Sources */,
 				4C36706818673FD100BDC5F5 /* SRRestKitManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
