@@ -10,4 +10,7 @@
 
 @protocol SRNetworkingProtocol <NSObject>
 
+@required
++ (NSDictionary *)JSONRepresentation;
+
 @end

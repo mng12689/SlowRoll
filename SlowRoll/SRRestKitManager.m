@@ -9,6 +9,7 @@
 #import "SRRestKitManager.h"
 #import <RestKit/RestKit.h>
 #import "SRAppDelegate.h"
+#import "SRNetworkingProtocol.h"
 
 static NSString *baseURLString = @"localhost:9000/";
 
@@ -54,15 +55,43 @@ static NSString *baseURLString = @"localhost:9000/";
 }
 
 #pragma mark - mappings
++ (RKObjectMapping *)responseMappingForClass:(Class)class
+{
+    RKObjectMapping *mapping;
+    if ([class isSubclassOfClass:[NSManagedObject class]]) {
+        RKManagedObjectStore *managedObjectStore = [RKObjectManager sharedManager].managedObjectStore;
+        mapping = [RKEntityMapping mappingForEntityForName:NSStringFromClass(class) inManagedObjectStore:managedObjectStore];
+    } else {
+        mapping = [[RKObjectMapping alloc] initWithClass:class];
+    }
+    
+    NSDictionary *JSONRepresentation;
+    if ([class conformsToProtocol:nil]) {
+        JSONRepresentation = [class JSONRepresentation];
+    }
+    [mapping addAttributeMappingsFromDictionary:JSONRepresentation];
+    return mapping;
+}
+
++ (RKObjectMapping *)requestMappingForClass:(Class)class
+{
+    RKObjectMapping *mapping = [RKObjectMapping requestMapping];
+    NSDictionary *JSONRepresentation;
+    if ([class conformsToProtocol:nil]) {
+        JSONRepresentation = [class JSONRepresentation];
+    }
+    [mapping addAttributeMappingsFromArray:[JSONRepresentation allValues]];
+    return mapping;
+}
+
 + (RKEntityMapping *)mappingForSRCameraRoll
 {
-    RKManagedObjectStore *managedObjectStore = [RKObjectManager sharedManager].managedObjectStore;
-    RKEntityMapping *mapping = [RKEntityMapping mappingForEntityForName:@"SRCameraRoll" inManagedObjectStore:managedObjectStore];
     [mapping addAttributeMappingsFromDictionary:@{@"roll_id" : @"rollID",
                                                   @"max_photos" : @"maxPhotos",
                                                   @"unused_photos" : @"unusedPhotos"}];
     
     [mapping addRelationshipMappingWithSourceKeyPath:@"participants" mapping:[SRRestKitManager mappingForSRRollParticipant]];
+    
     return mapping;
 }
 
@@ -121,11 +150,12 @@ static NSString *baseURLString = @"localhost:9000/";
 #pragma mark - request descriptors
 + (NSArray *)requestDescriptorsForSRCameraRoll
 {
-    RKRequestDescriptor *postDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:[SRRestKitManager mappingForSRCameraRoll]
+    RKObjectMapping *mapping = [SRRestKitManager requestMappingForClass:[SRCameraRoll class]];
+    RKRequestDescriptor *postDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:mapping
                                                                                 objectClass:[NSObject class]
                                                                                 rootKeyPath:@"cameraRoll"
                                                                                      method:RKRequestMethodPOST];
-    RKRequestDescriptor *updateDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:[SRRestKitManager mappingForSRCameraRoll]
+    RKRequestDescriptor *updateDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:mapping
                                                                                   objectClass:[NSObject class]
                                                                                   rootKeyPath:@"cameraRoll"
                                                                                        method:RKRequestMethodPUT];
@@ -134,11 +164,12 @@ static NSString *baseURLString = @"localhost:9000/";
 
 + (NSArray *)requestDescriptorsForSRRollParticipant
 {
-    RKRequestDescriptor *postDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:[SRRestKitManager mappingForSRRollParticipant]
+    RKObjectMapping *mapping = [SRRestKitManager requestMappingForClass:[SRRollParticipant class]];
+    RKRequestDescriptor *postDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:mapping
                                                                                 objectClass:[NSObject class]
                                                                                 rootKeyPath:@"rollParticipant"
                                                                                      method:RKRequestMethodPOST];
-    RKRequestDescriptor *updateDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:[SRRestKitManager mappingForSRRollParticipant]
+    RKRequestDescriptor *updateDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:mapping
                                                                                   objectClass:[NSObject class]
                                                                                   rootKeyPath:@"rollParticipant"
                                                                                        method:RKRequestMethodPUT];
@@ -147,7 +178,8 @@ static NSString *baseURLString = @"localhost:9000/";
 
 + (NSArray *)requestDescriptorsForSRPurchaseOrder
 {
-    RKRequestDescriptor *postDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:[SRRestKitManager mappingForSRPurchaseOrder]
+    RKObjectMapping *mapping = [SRRestKitManager requestMappingForClass:[SRPurchaseOrder class]];
+    RKRequestDescriptor *postDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:mapping
                                                                                 objectClass:[NSObject class]
                                                                                 rootKeyPath:@"purchaseOrder"
                                                                                      method:RKRequestMethodPOST];
