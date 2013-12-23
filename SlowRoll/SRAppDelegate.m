@@ -8,6 +8,7 @@
 
 #import "SRAppDelegate.h"
 #import "SRRestKitManager.h"
+#import <Crashlytics/Crashlytics.h>
 
 @implementation SRAppDelegate
 
@@ -20,6 +21,8 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     [SRRestKitManager initializeRestKit];
+    
+    [Crashlytics startWithAPIKey:@"963e635f73c4547daa93221a391a60d632c8dfed"];
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];

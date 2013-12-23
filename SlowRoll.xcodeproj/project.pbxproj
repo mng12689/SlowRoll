@@ -26,6 +26,7 @@
 		4C685B351866286500ED860D /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C685B191866286400ED860D /* CoreData.framework */; };
 		4C685B3D1866286500ED860D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C685B3B1866286500ED860D /* InfoPlist.strings */; };
 		4C685B3F1866286500ED860D /* SlowRollTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C685B3E1866286500ED860D /* SlowRollTests.m */; };
+		4CC34FA21868B91500AD02E2 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CC34FA11868B91500AD02E2 /* Crashlytics.framework */; };
 		CFDEBD76A4464015A6996773 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3201D1097F014222AAAFA51F /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -68,6 +69,7 @@
 		4C685B3A1866286500ED860D /* SlowRollTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SlowRollTests-Info.plist"; sourceTree = "<group>"; };
 		4C685B3C1866286500ED860D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4C685B3E1866286500ED860D /* SlowRollTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SlowRollTests.m; sourceTree = "<group>"; };
+		4CC34FA11868B91500AD02E2 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		50B4BDF6A8C6400B9BC4E6E3 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -80,6 +82,7 @@
 				4C685B1A1866286400ED860D /* CoreData.framework in Frameworks */,
 				4C685B181866286400ED860D /* UIKit.framework in Frameworks */,
 				4C685B141866286400ED860D /* Foundation.framework in Frameworks */,
+				4CC34FA21868B91500AD02E2 /* Crashlytics.framework in Frameworks */,
 				CFDEBD76A4464015A6996773 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -153,6 +156,7 @@
 		4C685B121866286400ED860D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4CC34FA11868B91500AD02E2 /* Crashlytics.framework */,
 				4C685B131866286400ED860D /* Foundation.framework */,
 				4C685B151866286400ED860D /* CoreGraphics.framework */,
 				4C685B171866286400ED860D /* UIKit.framework */,
@@ -217,6 +221,7 @@
 				4C685B0D1866286400ED860D /* Frameworks */,
 				4C685B0E1866286400ED860D /* Resources */,
 				EC683ABD696146DC9191E75A /* Copy Pods Resources */,
+				4CC34FA01868B89C00AD02E2 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -313,6 +318,19 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
+		};
+		4CC34FA01868B89C00AD02E2 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Crashlytics.framework/run 963e635f73c4547daa93221a391a60d632c8dfed";
 		};
 		EC683ABD696146DC9191E75A /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -462,6 +480,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/Michael/Desktop/SlowRoll,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SlowRoll/SlowRoll-Prefix.pch";
 				INFOPLIST_FILE = "SlowRoll/SlowRoll-Info.plist";
@@ -476,6 +498,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/Michael/Desktop/SlowRoll,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SlowRoll/SlowRoll-Prefix.pch";
 				INFOPLIST_FILE = "SlowRoll/SlowRoll-Info.plist";

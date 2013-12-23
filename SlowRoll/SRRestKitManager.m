@@ -38,7 +38,7 @@ static NSString *baseURLString = @"localhost:9000/";
     if (! persistentStore) {
         RKLogError(@"Failed adding persistent store at path '%@': %@", path, error);
     }
-    //[managedObjectStore createManagedObjectContexts];
+    [managedObjectStore createManagedObjectContexts];
     manager.managedObjectStore = managedObjectStore;
     
     // add request descriptors for requests
