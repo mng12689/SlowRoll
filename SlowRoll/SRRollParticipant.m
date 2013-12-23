@@ -20,4 +20,14 @@
 @dynamic userID;
 @dynamic cameraRoll;
 
++ (NSDictionary *)JSONRepresentation
+{
+    return @{@"participant_id" : @"participantID",
+             @"display_name" : @"displayName",
+             @"max_photos" : @"maxPhotos",
+             @"unused_photos" : @"unusedPhotos",
+             @"user_id" : @"user_id",
+             @"roll_id" : @"rollID"};
+}
+
 @end

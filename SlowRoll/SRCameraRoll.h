@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import "SRNetworkingProtocol.h"
 
-
-@interface SRCameraRoll : NSManagedObject
+@interface SRCameraRoll : NSManagedObject <SRNetworkingProtocol>
 
 @property (nonatomic, retain) NSNumber * maxPhotos;
 @property (nonatomic, retain) NSNumber * rollID;

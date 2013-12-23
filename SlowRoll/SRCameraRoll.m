@@ -17,4 +17,10 @@
 @dynamic participants;
 @dynamic purchaseOrders;
 
++ (NSDictionary *)JSONRepresentation
+{
+    return @{@"roll_id" : @"rollID",
+             @"max_photos" : @"maxPhotos",
+             @"unused_photos" : @"unusedPhotos"};
+}
 @end
