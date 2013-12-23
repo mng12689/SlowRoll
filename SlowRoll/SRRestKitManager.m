@@ -14,7 +14,7 @@
 #import "SRRollParticipant.h"
 #import "SRPurchaseOrder.h"
 
-static NSString *baseURLString = @"localhost:9000/";
+static NSString *baseURLString = @"localhost:9000";
 
 @implementation SRRestKitManager
 
@@ -129,22 +129,22 @@ static NSString *baseURLString = @"localhost:9000/";
 + (NSArray *)routesForSRCameraRoll
 {
     RKRoute *getRoute = [RKRoute routeWithClass:[SRCameraRoll class] pathPattern:@"/cameraRolls/:rollID" method:RKRequestMethodGET];
-    RKRoute *postRoute = [RKRoute routeWithClass:[SRCameraRoll class] pathPattern:@"cameraRolls" method:RKRequestMethodPOST];
-    RKRoute *updateRoute = [RKRoute routeWithClass:[SRCameraRoll class] pathPattern:@"cameraRolls/:rollID" method:RKRequestMethodPUT];
+    RKRoute *postRoute = [RKRoute routeWithClass:[SRCameraRoll class] pathPattern:@"/cameraRolls" method:RKRequestMethodPOST];
+    RKRoute *updateRoute = [RKRoute routeWithClass:[SRCameraRoll class] pathPattern:@"/cameraRolls/:rollID" method:RKRequestMethodPUT];
     return @[getRoute,postRoute,updateRoute];
 }
 
 + (NSArray *)routesForSRRollPartipicant
 {
     RKRoute *getRoute = [RKRoute routeWithClass:[SRRollParticipant class] pathPattern:@"/rollParticipants/:participantID" method:RKRequestMethodGET];
-    RKRoute *postRoute = [RKRoute routeWithClass:[SRRollParticipant class] pathPattern:@"rollParticipants" method:RKRequestMethodPOST];
-    RKRoute *updateRoute = [RKRoute routeWithClass:[SRRollParticipant class] pathPattern:@"rollParticipants/:participantID" method:RKRequestMethodPUT];
+    RKRoute *postRoute = [RKRoute routeWithClass:[SRRollParticipant class] pathPattern:@"/rollParticipants" method:RKRequestMethodPOST];
+    RKRoute *updateRoute = [RKRoute routeWithClass:[SRRollParticipant class] pathPattern:@"/rollParticipants/:participantID" method:RKRequestMethodPUT];
     return @[getRoute,postRoute,updateRoute];}
 
 + (NSArray *)routesForSRPurchaseOrder
 {
     RKRoute *getRoute = [RKRoute routeWithClass:[SRPurchaseOrder class] pathPattern:@"/purchaseOrders/:orderID" method:RKRequestMethodGET];
-    RKRoute *postRoute = [RKRoute routeWithClass:[SRPurchaseOrder class] pathPattern:@"purchaseOrders" method:RKRequestMethodPOST];
+    RKRoute *postRoute = [RKRoute routeWithClass:[SRPurchaseOrder class] pathPattern:@"/purchaseOrders" method:RKRequestMethodPOST];
     return @[getRoute,postRoute];
 }
 
