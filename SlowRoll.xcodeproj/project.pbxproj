@@ -27,6 +27,7 @@
 		4C685B3D1866286500ED860D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C685B3B1866286500ED860D /* InfoPlist.strings */; };
 		4C685B3F1866286500ED860D /* SlowRollTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C685B3E1866286500ED860D /* SlowRollTests.m */; };
 		4CC34FA21868B91500AD02E2 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CC34FA11868B91500AD02E2 /* Crashlytics.framework */; };
+		4CC34FA6186CDFCD00AD02E2 /* SRCameraRollListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CC34FA5186CDFCD00AD02E2 /* SRCameraRollListViewController.m */; };
 		CFDEBD76A4464015A6996773 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3201D1097F014222AAAFA51F /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +71,8 @@
 		4C685B3C1866286500ED860D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4C685B3E1866286500ED860D /* SlowRollTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SlowRollTests.m; sourceTree = "<group>"; };
 		4CC34FA11868B91500AD02E2 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		4CC34FA4186CDFCD00AD02E2 /* SRCameraRollListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRCameraRollListViewController.h; sourceTree = "<group>"; };
+		4CC34FA5186CDFCD00AD02E2 /* SRCameraRollListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRCameraRollListViewController.m; sourceTree = "<group>"; };
 		50B4BDF6A8C6400B9BC4E6E3 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -173,6 +176,7 @@
 				4C685B241866286500ED860D /* SRAppDelegate.h */,
 				4C685B251866286500ED860D /* SRAppDelegate.m */,
 				4C685B2A1866286500ED860D /* Images.xcassets */,
+				4CC34FA3186CDF5200AD02E2 /* View Controllers */,
 				4C36706418673F9500BDC5F5 /* Core Data */,
 				4C367069186741BE00BDC5F5 /* Networking */,
 				4C685B1C1866286400ED860D /* Supporting Files */,
@@ -207,6 +211,15 @@
 				4C685B3B1866286500ED860D /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4CC34FA3186CDF5200AD02E2 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4CC34FA4186CDFCD00AD02E2 /* SRCameraRollListViewController.h */,
+				4CC34FA5186CDFCD00AD02E2 /* SRCameraRollListViewController.m */,
+			);
+			name = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -356,6 +369,7 @@
 			files = (
 				4C685B221866286500ED860D /* main.m in Sources */,
 				4C0A43131867D0EF005EBC18 /* SRCameraRoll.m in Sources */,
+				4CC34FA6186CDFCD00AD02E2 /* SRCameraRollListViewController.m in Sources */,
 				4C685B291866286500ED860D /* SlowRoll.xcdatamodeld in Sources */,
 				4C685B261866286500ED860D /* SRAppDelegate.m in Sources */,
 				4C0A43161867D0F0005EBC18 /* SRPurchaseOrder.m in Sources */,
