@@ -9,6 +9,7 @@
 #import "SRAppDelegate.h"
 #import "SRRestKitManager.h"
 #import <Crashlytics/Crashlytics.h>
+#import "SRCameraRollListViewController.h"
 
 @implementation SRAppDelegate
 
@@ -24,6 +25,7 @@
     
     [Crashlytics startWithAPIKey:@"963e635f73c4547daa93221a391a60d632c8dfed"];
     
+    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[SRCameraRollListViewController new]];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;

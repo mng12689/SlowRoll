@@ -43,7 +43,10 @@ static NSString *BasicCellIdentifier = @"basicCellID";
                                                                           sectionNameKeyPath:nil
                                                                                    cacheName:nil];
     NSError *error;
-    BOOL success = [self.fetchedResultsController performFetch:&error];
+    //BOOL success = [self.fetchedResultsController performFetch:&error];
+    
+    UIBarButtonItem *addButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(showCreateCameraRoll)];
+    self.navigationItem.rightBarButtonItem = addButtonItem;
 }
 
 - (void)didReceiveMemoryWarning
@@ -133,6 +136,20 @@ static NSString *BasicCellIdentifier = @"basicCellID";
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
     [self.tableView endUpdates];
+}
+
+#pragma mark - Create new roll
+- (void)showCreateCameraRoll
+{
+    UIViewController *vc = [UIViewController new];
+    vc.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismissModal)];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:vc];
+    [self.navigationController presentViewController:navController animated:YES completion:nil];
+}
+
+- (void)dismissModal
+{
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
