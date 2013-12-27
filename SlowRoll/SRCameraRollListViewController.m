@@ -9,6 +9,7 @@
 #import "SRCameraRollListViewController.h"
 #import "SRAppDelegate.h"
 #import "SRCameraRoll.h"
+#import "SRCreateRollViewController.h"
 
 static NSString *BasicCellIdentifier = @"basicCellID";
 
@@ -141,9 +142,9 @@ static NSString *BasicCellIdentifier = @"basicCellID";
 #pragma mark - Create new roll
 - (void)showCreateCameraRoll
 {
-    UIViewController *vc = [UIViewController new];
-    vc.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismissModal)];
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:vc];
+    SRCreateRollViewController *createVC = [SRCreateRollViewController new];
+    createVC.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismissModal)];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:createVC];
     [self.navigationController presentViewController:navController animated:YES completion:nil];
 }
 
