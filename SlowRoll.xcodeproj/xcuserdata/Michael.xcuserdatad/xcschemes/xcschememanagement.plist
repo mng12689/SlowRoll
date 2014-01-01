@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Mogenerator.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>8</integer>
+		</dict>
 		<key>SlowRoll.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -18,6 +23,11 @@
 			<true/>
 		</dict>
 		<key>4C685B2F1866286500ED860D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4CC34FAA1874D38300AD02E2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
