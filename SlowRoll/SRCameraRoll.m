@@ -12,6 +12,7 @@
 @implementation SRCameraRoll
 
 @dynamic maxPhotos;
+@dynamic name;
 @dynamic rollID;
 @dynamic unusedPhotos;
 @dynamic participants;
@@ -23,4 +24,5 @@
              @"max_photos" : @"maxPhotos",
              @"unused_photos" : @"unusedPhotos"};
 }
+
 @end

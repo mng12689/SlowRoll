@@ -17,6 +17,7 @@ static NSString *BasicCellIdentifier = @"basicCellID";
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
+
 @end
 
 @implementation SRCameraRollListViewController
@@ -73,9 +74,11 @@ static NSString *BasicCellIdentifier = @"basicCellID";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSManagedObject *managedObject = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    SRCameraRoll *cameraRoll = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
     UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:BasicCellIdentifier];
+    cell.textLabel.text = cameraRoll.name;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"You have %i pictures left to take\n%@ took a picture on this roll 37 minutes ago", 1, @"Rob"];
     
     return cell;
 }

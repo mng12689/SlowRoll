@@ -12,11 +12,13 @@
 
 @interface SRCameraRoll : NSManagedObject <SRNetworkingProtocol>
 
+@property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSNumber * maxPhotos;
 @property (nonatomic, retain) NSNumber * rollID;
 @property (nonatomic, retain) NSNumber * unusedPhotos;
 @property (nonatomic, retain) NSSet *participants;
-@property (nonatomic, retain) NSManagedObject *purchaseOrders;
+@property (nonatomic, retain) NSSet *purchaseOrders;
+
 @end
 
 @interface SRCameraRoll (CoreDataGeneratedAccessors)
