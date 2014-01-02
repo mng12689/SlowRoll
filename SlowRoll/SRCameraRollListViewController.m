@@ -6,6 +6,18 @@
 //  Copyright (c) 2013 SlowRoll. All rights reserved.
 //
 
+@interface SRCameraRollListFetchedResultsController : NSFetchedResultsController
+@end
+
+@implementation SRCameraRollListFetchedResultsController
+
+- (NSString *)sectionIndexTitleForSectionName:(NSString *)sectionName
+{
+    return [sectionName capitalizedString];
+}
+
+@end
+
 #import "SRCameraRollListViewController.h"
 #import "SRAppDelegate.h"
 #import "SRCameraRoll.h"
@@ -17,7 +29,7 @@ static NSString *BasicCellIdentifier = @"basicCellID";
 @interface SRCameraRollListViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
+@property (nonatomic, strong) SRCameraRollListFetchedResultsController *fetchedResultsController;
 
 @end
 
@@ -61,7 +73,7 @@ static NSString *BasicCellIdentifier = @"basicCellID";
     NSSortDescriptor *stateSortDescriptor = [[NSSortDescriptor alloc] initWithKey:SRCameraRollAttributes.stateSortPrecedence ascending:YES];
     NSSortDescriptor *lastPhotoTakenSortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:NO];
     [fetchRequest setSortDescriptors:@[stateSortDescriptor,lastPhotoTakenSortDescriptor]];
-    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+    self.fetchedResultsController = [[SRCameraRollListFetchedResultsController alloc] initWithFetchRequest:fetchRequest
                                                                         managedObjectContext:MOC
                                                                           sectionNameKeyPath:SRCameraRollAttributes.state
                                                                                    cacheName:nil];
