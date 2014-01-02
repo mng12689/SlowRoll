@@ -5,6 +5,7 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="rollID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="stateSortPrecedence" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="unusedPhotos" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <relationship name="participants" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SRRollParticipant" inverseName="cameraRoll" inverseEntity="SRRollParticipant" syncable="YES"/>
         <relationship name="purchaseOrders" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SRPurchaseOrder" inverseName="cameraRoll" inverseEntity="SRPurchaseOrder" syncable="YES"/>

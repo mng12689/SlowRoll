@@ -65,14 +65,6 @@ static NSString *BasicCellIdentifier = @"basicCellID";
     self.navigationItem.rightBarButtonItem = addButtonItem;
 }
 
-+ (NSInteger)sortPrecedenceForCameraRollStateType:(CameraRollStateType)cameraRollStateType
-{
-    switch (cameraRollStateType) {
-        case CameraRollStateTypeActive: return 0;
-        case CameraRollStateTypeFinished: return 2;
-    }
-}
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

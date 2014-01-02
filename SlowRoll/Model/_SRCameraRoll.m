@@ -8,6 +8,7 @@ const struct SRCameraRollAttributes SRCameraRollAttributes = {
 	.name = @"name",
 	.rollID = @"rollID",
 	.state = @"state",
+	.stateSortPrecedence = @"stateSortPrecedence",
 	.unusedPhotos = @"unusedPhotos",
 };
 
@@ -52,6 +53,11 @@ const struct SRCameraRollFetchedProperties SRCameraRollFetchedProperties = {
 	}
 	if ([key isEqualToString:@"rollIDValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"rollID"];
+		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
+	}
+	if ([key isEqualToString:@"stateSortPrecedenceValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"stateSortPrecedence"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
 		return keyPaths;
 	}
@@ -128,6 +134,32 @@ const struct SRCameraRollFetchedProperties SRCameraRollFetchedProperties = {
 
 @dynamic state;
 
+
+
+
+
+
+@dynamic stateSortPrecedence;
+
+
+
+- (int16_t)stateSortPrecedenceValue {
+	NSNumber *result = [self stateSortPrecedence];
+	return [result shortValue];
+}
+
+- (void)setStateSortPrecedenceValue:(int16_t)value_ {
+	[self setStateSortPrecedence:[NSNumber numberWithShort:value_]];
+}
+
+- (int16_t)primitiveStateSortPrecedenceValue {
+	NSNumber *result = [self primitiveStateSortPrecedence];
+	return [result shortValue];
+}
+
+- (void)setPrimitiveStateSortPrecedenceValue:(int16_t)value_ {
+	[self setPrimitiveStateSortPrecedence:[NSNumber numberWithShort:value_]];
+}
 
 
 
