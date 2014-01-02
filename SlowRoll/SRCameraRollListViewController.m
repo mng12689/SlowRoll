@@ -10,6 +10,7 @@
 #import "SRAppDelegate.h"
 #import "SRCameraRoll.h"
 #import "SRCreateRollViewController.h"
+#import "SRSubtitleCell.h"
 
 static NSString *BasicCellIdentifier = @"basicCellID";
 
@@ -21,31 +22,43 @@ static NSString *BasicCellIdentifier = @"basicCellID";
 @end
 
 @implementation SRCameraRollListViewController
+- (void)addSeedData
+{
+    NSManagedObjectContext *context = [(SRAppDelegate*)[UIApplication sharedApplication].delegate managedObjectContext];
+    for (NSInteger i = 0; i < 3; i++) {
+        NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"SRCameraRoll" inManagedObjectContext:context];
+        SRCameraRoll *roll = (SRCameraRoll*)[[NSManagedObject alloc] initWithEntity:entityDescription insertIntoManagedObjectContext:context];
+        roll.name = [NSString stringWithFormat:@"Camera Roll %i", i];
+    }
+    [context save:nil];
+}
 
 #pragma mark - lifecycle
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	
+    //[self addSeedData];
+    
     UITableView *tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
     tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
     tableView.delegate = self;
     tableView.dataSource = self;
-    [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:BasicCellIdentifier];
+    tableView.rowHeight = 60;
+    [tableView registerClass:[SRSubtitleCell class] forCellReuseIdentifier:BasicCellIdentifier];
     [self.view addSubview:tableView];
     self.tableView = tableView;
     
     NSManagedObjectContext *MOC = [(SRAppDelegate *)[UIApplication sharedApplication].delegate managedObjectContext];
     
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:NSStringFromClass([SRCameraRoll class])];
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"updated_at" ascending:NO];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:NO];
     [fetchRequest setSortDescriptors:@[sortDescriptor]];
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
                                                                         managedObjectContext:MOC
                                                                           sectionNameKeyPath:nil
                                                                                    cacheName:nil];
-    NSError *error;
-    //BOOL success = [self.fetchedResultsController performFetch:&error];
+    [self.fetchedResultsController performFetch:nil];
     
     UIBarButtonItem *addButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(showCreateCameraRoll)];
     self.navigationItem.rightBarButtonItem = addButtonItem;
@@ -78,7 +91,9 @@ static NSString *BasicCellIdentifier = @"basicCellID";
     
     UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:BasicCellIdentifier];
     cell.textLabel.text = cameraRoll.name;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"You have %i pictures left to take\n%@ took a picture on this roll 37 minutes ago", 1, @"Rob"];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"You have %i pictures left to take\n%@ took a picture 37 minutes ago", 1, @"Rob"];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.detailTextLabel.numberOfLines = 2;
     
     return cell;
 }

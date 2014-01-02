@@ -46,6 +46,7 @@
 		4CC34FC21874D7F000AD02E2 /* SRCameraRoll.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CC34FBD1874D7F000AD02E2 /* SRCameraRoll.m */; };
 		4CC34FC31874D7F000AD02E2 /* SRPurchaseOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CC34FBF1874D7F000AD02E2 /* SRPurchaseOrder.m */; };
 		4CC34FC41874D7F000AD02E2 /* SRRollParticipant.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CC34FC11874D7F000AD02E2 /* SRRollParticipant.m */; };
+		4CC34FC81875063300AD02E2 /* SRSubtitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CC34FC71875063300AD02E2 /* SRSubtitleCell.m */; };
 		CFDEBD76A4464015A6996773 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3201D1097F014222AAAFA51F /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -87,7 +88,7 @@
 		4CC34FA5186CDFCD00AD02E2 /* SRCameraRollListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRCameraRollListViewController.m; sourceTree = "<group>"; };
 		4CC34FA7186CF7D600AD02E2 /* SRCreateRollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRCreateRollViewController.h; sourceTree = "<group>"; };
 		4CC34FA8186CF7D600AD02E2 /* SRCreateRollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRCreateRollViewController.m; sourceTree = "<group>"; };
-		4CC34FAF1874D5D300AD02E2 /* SlowRoll_1.0.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = SlowRoll_1.0.xcdatamodel; sourceTree = "<group>"; };
+		4CC34FAF1874D5D300AD02E2 /* SlowRoll_1.0.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SlowRoll_1.0.xcdatamodel; sourceTree = "<group>"; };
 		4CC34FB11874D7B900AD02E2 /* _SRCameraRoll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _SRCameraRoll.h; path = Model/_SRCameraRoll.h; sourceTree = "<group>"; };
 		4CC34FB21874D7B900AD02E2 /* _SRCameraRoll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = _SRCameraRoll.m; path = Model/_SRCameraRoll.m; sourceTree = "<group>"; };
 		4CC34FB31874D7B900AD02E2 /* _SRPurchaseOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _SRPurchaseOrder.h; path = Model/_SRPurchaseOrder.h; sourceTree = "<group>"; };
@@ -100,6 +101,8 @@
 		4CC34FBF1874D7F000AD02E2 /* SRPurchaseOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRPurchaseOrder.m; path = Model/SRPurchaseOrder.m; sourceTree = "<group>"; };
 		4CC34FC01874D7F000AD02E2 /* SRRollParticipant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRRollParticipant.h; path = Model/SRRollParticipant.h; sourceTree = "<group>"; };
 		4CC34FC11874D7F000AD02E2 /* SRRollParticipant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRRollParticipant.m; path = Model/SRRollParticipant.m; sourceTree = "<group>"; };
+		4CC34FC61875063300AD02E2 /* SRSubtitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRSubtitleCell.h; sourceTree = "<group>"; };
+		4CC34FC71875063300AD02E2 /* SRSubtitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRSubtitleCell.m; sourceTree = "<group>"; };
 		50B4BDF6A8C6400B9BC4E6E3 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -198,6 +201,7 @@
 				4C685B241866286500ED860D /* SRAppDelegate.h */,
 				4C685B251866286500ED860D /* SRAppDelegate.m */,
 				4C685B2A1866286500ED860D /* Images.xcassets */,
+				4CC34FC5187505F700AD02E2 /* Custom Cells */,
 				4CC34FA3186CDF5200AD02E2 /* View Controllers */,
 				4C36706418673F9500BDC5F5 /* Core Data */,
 				4C367069186741BE00BDC5F5 /* Networking */,
@@ -279,6 +283,15 @@
 				4CC34FC11874D7F000AD02E2 /* SRRollParticipant.m */,
 			);
 			name = "Editable Entities";
+			sourceTree = "<group>";
+		};
+		4CC34FC5187505F700AD02E2 /* Custom Cells */ = {
+			isa = PBXGroup;
+			children = (
+				4CC34FC61875063300AD02E2 /* SRSubtitleCell.h */,
+				4CC34FC71875063300AD02E2 /* SRSubtitleCell.m */,
+			);
+			name = "Custom Cells";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -450,6 +463,7 @@
 				4CC34FC31874D7F000AD02E2 /* SRPurchaseOrder.m in Sources */,
 				4CC34FC21874D7F000AD02E2 /* SRCameraRoll.m in Sources */,
 				4C36706818673FD100BDC5F5 /* SRRestKitManager.m in Sources */,
+				4CC34FC81875063300AD02E2 /* SRSubtitleCell.m in Sources */,
 				4CC34FB81874D7B900AD02E2 /* _SRPurchaseOrder.m in Sources */,
 				4CC34FB91874D7B900AD02E2 /* _SRRollParticipant.m in Sources */,
 			);
@@ -694,6 +708,7 @@
 				4CC34FAD1874D38300AD02E2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
@@ -704,7 +719,7 @@
 				4CC34FAF1874D5D300AD02E2 /* SlowRoll_1.0.xcdatamodel */,
 				4C685B281866286500ED860D /* SlowRoll.xcdatamodel */,
 			);
-			currentVersion = 4C685B281866286500ED860D /* SlowRoll.xcdatamodel */;
+			currentVersion = 4CC34FAF1874D5D300AD02E2 /* SlowRoll_1.0.xcdatamodel */;
 			path = SlowRoll.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
