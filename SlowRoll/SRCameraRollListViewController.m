@@ -45,6 +45,7 @@ static NSString *BasicCellIdentifier = @"basicCellID";
     tableView.delegate = self;
     tableView.dataSource = self;
     tableView.rowHeight = 60;
+    tableView.allowsMultipleSelection = NO;
     [tableView registerClass:[SRSubtitleCell class] forCellReuseIdentifier:BasicCellIdentifier];
     [self.view addSubview:tableView];
     self.tableView = tableView;
@@ -90,10 +91,15 @@ static NSString *BasicCellIdentifier = @"basicCellID";
     SRCameraRoll *cameraRoll = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
     UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:BasicCellIdentifier];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+
     cell.textLabel.text = cameraRoll.name;
     cell.detailTextLabel.text = [NSString stringWithFormat:@"You have %i pictures left to take\n%@ took a picture 37 minutes ago", 1, @"Rob"];
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     cell.detailTextLabel.numberOfLines = 2;
+    
+    UIView *backgroundView = [[UIView alloc] initWithFrame:cell.contentView.bounds];
+    backgroundView.backgroundColor = [UIColor colorWithRed:0 green:1 blue:0 alpha:.1];
+    cell.selectedBackgroundView = backgroundView;
     
     return cell;
 }
