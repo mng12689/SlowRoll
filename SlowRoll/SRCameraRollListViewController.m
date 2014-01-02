@@ -29,6 +29,11 @@ static NSString *BasicCellIdentifier = @"basicCellID";
         NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"SRCameraRoll" inManagedObjectContext:context];
         SRCameraRoll *roll = (SRCameraRoll*)[[NSManagedObject alloc] initWithEntity:entityDescription insertIntoManagedObjectContext:context];
         roll.name = [NSString stringWithFormat:@"Camera Roll %i", i];
+        if (i%2) {
+            roll.state = @"active";
+        } else {
+            roll.state = @"finished";
+        }
     }
     [context save:nil];
 }
@@ -53,11 +58,12 @@ static NSString *BasicCellIdentifier = @"basicCellID";
     NSManagedObjectContext *MOC = [(SRAppDelegate *)[UIApplication sharedApplication].delegate managedObjectContext];
     
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:NSStringFromClass([SRCameraRoll class])];
+    NSSortDescriptor *stateSortDescriptor = [[NSSortDescriptor alloc] initWithKey:SRCameraRollAttributes.stateSortPrecedence ascending:YES];
     NSSortDescriptor *lastPhotoTakenSortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:NO];
-    [fetchRequest setSortDescriptors:@[lastPhotoTakenSortDescriptor]];
+    [fetchRequest setSortDescriptors:@[stateSortDescriptor,lastPhotoTakenSortDescriptor]];
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
                                                                         managedObjectContext:MOC
-                                                                          sectionNameKeyPath:nil
+                                                                          sectionNameKeyPath:SRCameraRollAttributes.state
                                                                                    cacheName:nil];
     [self.fetchedResultsController performFetch:nil];
     
@@ -102,6 +108,11 @@ static NSString *BasicCellIdentifier = @"basicCellID";
     cell.selectedBackgroundView = backgroundView;
     
     return cell;
+}
+
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return self.fetchedResultsController.sectionIndexTitles[section];
 }
 
 #pragma mark - NSFetchedResultsController delegate methods

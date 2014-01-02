@@ -5,8 +5,8 @@ typedef NS_ENUM(NSInteger, CameraRollStateType) {
     CameraRollStateTypeFinished,
 };
 
-extern const NSString *CameraRollAPIStateActive;
-extern const NSString *CameraRollAPIStateFinished;
+extern NSString* const CameraRollAPIStateActive;
+extern NSString* const CameraRollAPIStateFinished;
 
 @interface SRCameraRoll : _SRCameraRoll {}
 

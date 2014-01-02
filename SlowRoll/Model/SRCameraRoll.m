@@ -1,5 +1,7 @@
 #import "SRCameraRoll.h"
 
+NSString* const CameraRollAPIStateActive = @"active";
+NSString* const CameraRollAPIStateFinished = @"finished";
 
 @interface SRCameraRoll ()
 
@@ -10,8 +12,12 @@
 
 @implementation SRCameraRoll
 
-- (NSNumber *)stateSortPrecedence
+- (void)setState:(NSString *)state
 {
+    [self willChangeValueForKey:@"state"];
+    [self setPrimitiveValue:state forKey:@"state"];
+    [self didChangeValueForKey:@"state"];
+    
     CameraRollStateType stateType = [SRCameraRoll cameraRollStateTypeForAPIState:self.state];
     NSInteger sortPrecedence = [SRCameraRoll sortPrecedenceForCameraRollStateType:stateType];
     [self willChangeValueForKey:@"stateSortPrecedence"];
@@ -25,6 +31,16 @@
         case CameraRollStateTypeActive: return 0;
         case CameraRollStateTypeFinished: return 2;
     }
+}
+
++ (CameraRollStateType)cameraRollStateTypeForAPIState:(NSString *)state
+{
+    if ([state isEqualToString:CameraRollAPIStateActive]) {
+        return CameraRollStateTypeActive;
+    } else if ([state isEqualToString:CameraRollAPIStateFinished]) {
+        return CameraRollStateTypeFinished;
+    }
+    return 0;
 }
 
 @end
