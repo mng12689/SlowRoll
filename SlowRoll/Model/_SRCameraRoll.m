@@ -7,6 +7,7 @@ const struct SRCameraRollAttributes SRCameraRollAttributes = {
 	.maxPhotos = @"maxPhotos",
 	.name = @"name",
 	.rollID = @"rollID",
+	.state = @"state",
 	.unusedPhotos = @"unusedPhotos",
 };
 
@@ -120,6 +121,13 @@ const struct SRCameraRollFetchedProperties SRCameraRollFetchedProperties = {
 - (void)setPrimitiveRollIDValue:(int64_t)value_ {
 	[self setPrimitiveRollID:[NSNumber numberWithLongLong:value_]];
 }
+
+
+
+
+
+@dynamic state;
+
 
 
 

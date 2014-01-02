@@ -10,6 +10,4 @@
 
 @implementation SRCameraRoll
 
-// Custom logic goes here.
-
 @end

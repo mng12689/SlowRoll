@@ -53,8 +53,8 @@ static NSString *BasicCellIdentifier = @"basicCellID";
     NSManagedObjectContext *MOC = [(SRAppDelegate *)[UIApplication sharedApplication].delegate managedObjectContext];
     
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:NSStringFromClass([SRCameraRoll class])];
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:NO];
-    [fetchRequest setSortDescriptors:@[sortDescriptor]];
+    NSSortDescriptor *lastPhotoTakenSortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:NO];
+    [fetchRequest setSortDescriptors:@[lastPhotoTakenSortDescriptor]];
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
                                                                         managedObjectContext:MOC
                                                                           sectionNameKeyPath:nil
@@ -63,6 +63,14 @@ static NSString *BasicCellIdentifier = @"basicCellID";
     
     UIBarButtonItem *addButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(showCreateCameraRoll)];
     self.navigationItem.rightBarButtonItem = addButtonItem;
+}
+
++ (NSInteger)sortPrecedenceForCameraRollStateType:(CameraRollStateType)cameraRollStateType
+{
+    switch (cameraRollStateType) {
+        case CameraRollStateTypeActive: return 0;
+        case CameraRollStateTypeFinished: return 2;
+    }
 }
 
 - (void)didReceiveMemoryWarning

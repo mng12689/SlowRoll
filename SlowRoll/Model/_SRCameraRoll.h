@@ -8,6 +8,7 @@ extern const struct SRCameraRollAttributes {
 	__unsafe_unretained NSString *maxPhotos;
 	__unsafe_unretained NSString *name;
 	__unsafe_unretained NSString *rollID;
+	__unsafe_unretained NSString *state;
 	__unsafe_unretained NSString *unusedPhotos;
 } SRCameraRollAttributes;
 
@@ -21,6 +22,7 @@ extern const struct SRCameraRollFetchedProperties {
 
 @class SRRollParticipant;
 @class SRPurchaseOrder;
+
 
 
 
@@ -73,6 +75,16 @@ extern const struct SRCameraRollFetchedProperties {
 - (void)setRollIDValue:(int64_t)value_;
 
 //- (BOOL)validateRollID:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
+@property (nonatomic, strong) NSString* state;
+
+
+
+//- (BOOL)validateState:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -146,6 +158,12 @@ extern const struct SRCameraRollFetchedProperties {
 
 - (int64_t)primitiveRollIDValue;
 - (void)setPrimitiveRollIDValue:(int64_t)value_;
+
+
+
+
+- (NSString*)primitiveState;
+- (void)setPrimitiveState:(NSString*)value;
 
 
 
