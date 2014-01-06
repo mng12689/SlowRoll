@@ -10,6 +10,8 @@
 #import "SRRestKitManager.h"
 #import <Crashlytics/Crashlytics.h>
 #import "SRCameraRollListViewController.h"
+#import "UIImage+SRColor.h"
+#import "UIColor+SRColors.h"
 
 @implementation SRAppDelegate
 
@@ -24,6 +26,8 @@
     [SRRestKitManager initializeRestKit];
     
     [Crashlytics startWithAPIKey:@"963e635f73c4547daa93221a391a60d632c8dfed"];
+    
+    [self setApplicationStyleDefaults];
     
     self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[SRCameraRollListViewController new]];
     self.window.backgroundColor = [UIColor whiteColor];
@@ -152,6 +156,14 @@
 - (NSURL *)applicationDocumentsDirectory
 {
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+}
+
+#pragma mark - application styling
+- (void)setApplicationStyleDefaults
+{
+    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageWithColor:[UIColor SRGreen]] forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 }
 
 @end
