@@ -3,6 +3,7 @@
     <entity name="SRCameraRoll" representedClassName="SRCameraRoll" syncable="YES">
         <attribute name="maxPhotos" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="printType" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="rollID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="stateSortPrecedence" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
