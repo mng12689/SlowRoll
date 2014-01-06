@@ -3,6 +3,9 @@
 NSString* const CameraRollAPIStateActive = @"active";
 NSString* const CameraRollAPIStateFinished = @"finished";
 
+NSString* const CameraRollAPIPrintTypeColor = @"color";
+NSString* const CameraRollAPIPrintTypeBlackAndWhite = @"black_and_white";
+
 @interface SRCameraRoll ()
 
 // Private interface goes here.

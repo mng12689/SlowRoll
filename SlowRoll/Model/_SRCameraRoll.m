@@ -6,6 +6,7 @@
 const struct SRCameraRollAttributes SRCameraRollAttributes = {
 	.maxPhotos = @"maxPhotos",
 	.name = @"name",
+	.printType = @"printType",
 	.rollID = @"rollID",
 	.state = @"state",
 	.stateSortPrecedence = @"stateSortPrecedence",
@@ -100,6 +101,13 @@ const struct SRCameraRollFetchedProperties SRCameraRollFetchedProperties = {
 
 
 @dynamic name;
+
+
+
+
+
+
+@dynamic printType;
 
 
 
