@@ -47,6 +47,12 @@
 		4CC34FC31874D7F000AD02E2 /* SRPurchaseOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CC34FBF1874D7F000AD02E2 /* SRPurchaseOrder.m */; };
 		4CC34FC41874D7F000AD02E2 /* SRRollParticipant.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CC34FC11874D7F000AD02E2 /* SRRollParticipant.m */; };
 		4CC34FC81875063300AD02E2 /* SRSubtitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CC34FC71875063300AD02E2 /* SRSubtitleCell.m */; };
+		4CC34FCF187A14AC00AD02E2 /* SRCreateRollCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CC34FCE187A14AC00AD02E2 /* SRCreateRollCoordinator.m */; };
+		4CC34FD2187A160800AD02E2 /* SREditableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CC34FD1187A160800AD02E2 /* SREditableCell.m */; };
+		4CC34FD8187A191000AD02E2 /* SRSegmentedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CC34FD7187A191000AD02E2 /* SRSegmentedCell.m */; };
+		4CC34FDC187A436100AD02E2 /* UIColor+SRColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CC34FDB187A436100AD02E2 /* UIColor+SRColors.m */; };
+		4CC34FE0187A450000AD02E2 /* SRSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CC34FDF187A450000AD02E2 /* SRSegmentedControl.m */; };
+		4CC34FE3187A459500AD02E2 /* UIImage+SRColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CC34FE2187A459500AD02E2 /* UIImage+SRColor.m */; };
 		CFDEBD76A4464015A6996773 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3201D1097F014222AAAFA51F /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -103,6 +109,18 @@
 		4CC34FC11874D7F000AD02E2 /* SRRollParticipant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRRollParticipant.m; path = Model/SRRollParticipant.m; sourceTree = "<group>"; };
 		4CC34FC61875063300AD02E2 /* SRSubtitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRSubtitleCell.h; sourceTree = "<group>"; };
 		4CC34FC71875063300AD02E2 /* SRSubtitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRSubtitleCell.m; sourceTree = "<group>"; };
+		4CC34FCD187A14AC00AD02E2 /* SRCreateRollCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRCreateRollCoordinator.h; sourceTree = "<group>"; };
+		4CC34FCE187A14AC00AD02E2 /* SRCreateRollCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRCreateRollCoordinator.m; sourceTree = "<group>"; };
+		4CC34FD0187A160800AD02E2 /* SREditableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SREditableCell.h; sourceTree = "<group>"; };
+		4CC34FD1187A160800AD02E2 /* SREditableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SREditableCell.m; sourceTree = "<group>"; };
+		4CC34FD6187A191000AD02E2 /* SRSegmentedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRSegmentedCell.h; sourceTree = "<group>"; };
+		4CC34FD7187A191000AD02E2 /* SRSegmentedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRSegmentedCell.m; sourceTree = "<group>"; };
+		4CC34FDA187A436100AD02E2 /* UIColor+SRColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+SRColors.h"; sourceTree = "<group>"; };
+		4CC34FDB187A436100AD02E2 /* UIColor+SRColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+SRColors.m"; sourceTree = "<group>"; };
+		4CC34FDE187A450000AD02E2 /* SRSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRSegmentedControl.h; sourceTree = "<group>"; };
+		4CC34FDF187A450000AD02E2 /* SRSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRSegmentedControl.m; sourceTree = "<group>"; };
+		4CC34FE1187A459500AD02E2 /* UIImage+SRColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+SRColor.h"; sourceTree = "<group>"; };
+		4CC34FE2187A459500AD02E2 /* UIImage+SRColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+SRColor.m"; sourceTree = "<group>"; };
 		50B4BDF6A8C6400B9BC4E6E3 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -201,7 +219,9 @@
 				4C685B241866286500ED860D /* SRAppDelegate.h */,
 				4C685B251866286500ED860D /* SRAppDelegate.m */,
 				4C685B2A1866286500ED860D /* Images.xcassets */,
+				4CC34FD9187A432900AD02E2 /* Categories */,
 				4CC34FC5187505F700AD02E2 /* Custom Cells */,
+				4CC34FDD187A43FB00AD02E2 /* UI Replacements */,
 				4CC34FA3186CDF5200AD02E2 /* View Controllers */,
 				4C36706418673F9500BDC5F5 /* Core Data */,
 				4C367069186741BE00BDC5F5 /* Networking */,
@@ -246,6 +266,8 @@
 				4CC34FA5186CDFCD00AD02E2 /* SRCameraRollListViewController.m */,
 				4CC34FA7186CF7D600AD02E2 /* SRCreateRollViewController.h */,
 				4CC34FA8186CF7D600AD02E2 /* SRCreateRollViewController.m */,
+				4CC34FCD187A14AC00AD02E2 /* SRCreateRollCoordinator.h */,
+				4CC34FCE187A14AC00AD02E2 /* SRCreateRollCoordinator.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -290,8 +312,32 @@
 			children = (
 				4CC34FC61875063300AD02E2 /* SRSubtitleCell.h */,
 				4CC34FC71875063300AD02E2 /* SRSubtitleCell.m */,
+				4CC34FD0187A160800AD02E2 /* SREditableCell.h */,
+				4CC34FD1187A160800AD02E2 /* SREditableCell.m */,
+				4CC34FD6187A191000AD02E2 /* SRSegmentedCell.h */,
+				4CC34FD7187A191000AD02E2 /* SRSegmentedCell.m */,
 			);
 			name = "Custom Cells";
+			sourceTree = "<group>";
+		};
+		4CC34FD9187A432900AD02E2 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				4CC34FDA187A436100AD02E2 /* UIColor+SRColors.h */,
+				4CC34FDB187A436100AD02E2 /* UIColor+SRColors.m */,
+				4CC34FE1187A459500AD02E2 /* UIImage+SRColor.h */,
+				4CC34FE2187A459500AD02E2 /* UIImage+SRColor.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		4CC34FDD187A43FB00AD02E2 /* UI Replacements */ = {
+			isa = PBXGroup;
+			children = (
+				4CC34FDE187A450000AD02E2 /* SRSegmentedControl.h */,
+				4CC34FDF187A450000AD02E2 /* SRSegmentedControl.m */,
+			);
+			name = "UI Replacements";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -454,9 +500,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C685B221866286500ED860D /* main.m in Sources */,
+				4CC34FD2187A160800AD02E2 /* SREditableCell.m in Sources */,
 				4CC34FA6186CDFCD00AD02E2 /* SRCameraRollListViewController.m in Sources */,
+				4CC34FE3187A459500AD02E2 /* UIImage+SRColor.m in Sources */,
+				4CC34FCF187A14AC00AD02E2 /* SRCreateRollCoordinator.m in Sources */,
+				4CC34FDC187A436100AD02E2 /* UIColor+SRColors.m in Sources */,
 				4CC34FA9186CF7D600AD02E2 /* SRCreateRollViewController.m in Sources */,
 				4CC34FC41874D7F000AD02E2 /* SRRollParticipant.m in Sources */,
+				4CC34FE0187A450000AD02E2 /* SRSegmentedControl.m in Sources */,
 				4C685B291866286500ED860D /* SlowRoll.xcdatamodeld in Sources */,
 				4C685B261866286500ED860D /* SRAppDelegate.m in Sources */,
 				4CC34FB71874D7B900AD02E2 /* _SRCameraRoll.m in Sources */,
@@ -464,6 +515,7 @@
 				4CC34FC21874D7F000AD02E2 /* SRCameraRoll.m in Sources */,
 				4C36706818673FD100BDC5F5 /* SRRestKitManager.m in Sources */,
 				4CC34FC81875063300AD02E2 /* SRSubtitleCell.m in Sources */,
+				4CC34FD8187A191000AD02E2 /* SRSegmentedCell.m in Sources */,
 				4CC34FB81874D7B900AD02E2 /* _SRPurchaseOrder.m in Sources */,
 				4CC34FB91874D7B900AD02E2 /* _SRRollParticipant.m in Sources */,
 			);

@@ -7,6 +7,8 @@
 //
 
 #import "SRSegmentedControl.h"
+#import "UIColor+SRColors.h"
+#import "UIImage+SRColor.h"
 
 @implementation SRSegmentedControl
 
@@ -14,18 +16,13 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self
+        [self setBackgroundImage:[UIImage imageWithColor:[UIColor SRGreen]] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+        [self setTintColor:[UIColor whiteColor]];
+        [self setDividerImage:[UIImage imageWithColor:[UIColor clearColor]] forLeftSegmentState:UIControlStateNormal rightSegmentState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+        //NSDictionary *textDictionary = @{NSFontAttributeName : }
+        //[self setTitleTextAttributes:textDictionary forState:UIControlStateNormal];
     }
     return self;
 }
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
 
 @end

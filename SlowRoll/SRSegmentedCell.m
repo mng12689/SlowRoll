@@ -7,10 +7,11 @@
 //
 
 #import "SRSegmentedCell.h"
+#import "SRSegmentedControl.h"
 
 @interface SRSegmentedCell ()
 
-@property (nonatomic, strong, readwrite) UISegmentedControl *segmentedControl;
+@property (nonatomic, strong, readwrite) SRSegmentedControl *segmentedControl;
 
 @end
 
@@ -19,7 +20,7 @@
 - (UISegmentedControl *)segmentedControl
 {
     if (!_segmentedControl) {
-        _segmentedControl = [[UISegmentedControl alloc] initWithFrame:self.contentView.bounds];
+        _segmentedControl = [[SRSegmentedControl alloc] initWithFrame:self.contentView.bounds];
         _segmentedControl.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
         [self.contentView addSubview:_segmentedControl];
     }

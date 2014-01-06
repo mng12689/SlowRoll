@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class SRSegmentedControl;
 
 @interface SRSegmentedCell : UITableViewCell
 
-@property (nonatomic, strong, readonly) UISegmentedControl *segmentedControl;
+@property (nonatomic, strong, readonly) SRSegmentedControl *segmentedControl;
 
 @end

@@ -7,7 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+@class SRCameraRoll;
 
 @interface SRCreateRollCoordinator : NSObject
+
+@property (nonatomic, strong, readonly) SRCameraRoll *cameraRollDraft;
+
+- (void)createCameraRoll;
 
 @end
