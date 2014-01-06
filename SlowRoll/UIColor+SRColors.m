@@ -10,4 +10,9 @@
 
 @implementation UIColor (SRColors)
 
+- (UIColor *)SRGreen
+{
+    return [UIColor greenColor];
+}
+
 @end

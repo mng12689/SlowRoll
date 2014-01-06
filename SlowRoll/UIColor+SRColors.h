@@ -10,4 +10,6 @@
 
 @interface UIColor (SRColors)
 
+- (UIColor *)SRGreen;
+
 @end
