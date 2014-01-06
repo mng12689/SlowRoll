@@ -20,4 +20,8 @@ extern NSString* const CameraRollAPIPrintTypeBlackAndWhite;
 
 + (CameraRollStateType)cameraRollStateTypeForAPIState:(NSString *)state;
 
+- (BOOL)isValid;
+
++ (NSString *)defaultRollName;
+
 @end

@@ -46,4 +46,17 @@ NSString* const CameraRollAPIPrintTypeBlackAndWhite = @"black_and_white";
     return 0;
 }
 
+#pragma mark - validation
+- (BOOL)isValid
+{
+    return self.name.length && self.printType.length && self.maxPhotos;
+}
+
+#pragma mark - defaults
++ (NSString *)defaultRollName
+{
+    NSDate *now = [NSDate date];
+    return [NSString stringWithFormat:@"SlowRoll-%@", now];
+}
+
 @end

@@ -84,6 +84,7 @@ static NSInteger rollTypeSegControlTag = 239520;
         case CreateSectionTypeRollName:{
             SREditableCell *editableCell = (SREditableCell *)cell;
             editableCell.textField.text = self.createRollCoordinator.cameraRollDraft.name;
+            editableCell.textField.placeholder = [SRCameraRoll defaultRollName];
             editableCell.textField.textColor = [UIColor whiteColor];
             editableCell.textField.backgroundColor = [UIColor colorWithWhite:1 alpha:.3];
             editableCell.textField.layer.cornerRadius = 5;

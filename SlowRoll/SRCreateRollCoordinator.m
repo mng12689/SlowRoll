@@ -25,7 +25,7 @@
     if (!_cameraRollDraft) {
         NSEntityDescription *entityDescription = [NSEntityDescription entityForName:NSStringFromClass([SRCameraRoll class]) inManagedObjectContext:self.editableContext];
         _cameraRollDraft = (SRCameraRoll*)[[NSManagedObject alloc] initWithEntity:entityDescription insertIntoManagedObjectContext:self.editableContext];
-        _cameraRollDraft.name = [NSString stringWithFormat:@"Camera Roll %i", 482390];
+        _cameraRollDraft.name = [SRCameraRoll defaultRollName];
         _cameraRollDraft.state = @"active"; //REMOVE THIS WHEN WE HAVE AN API
     }
     return _cameraRollDraft;
@@ -45,7 +45,9 @@
 #pragma mark - API interactions
 - (void)createCameraRoll
 {
-    [self.editableContext save:nil];
+    if ([self.cameraRollDraft isValid]) {
+        [self.editableContext save:nil];
+    }
 }
 
 //REMOVE THIS WHEN WE HAVE AN API
