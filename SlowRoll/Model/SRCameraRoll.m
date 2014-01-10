@@ -8,6 +8,8 @@ NSString* const CameraRollAPIPrintTypeBlackAndWhite = @"black_and_white";
 
 NSString* const errorDomain = @"com.slowroll.cameraRoll";
 
+static NSDateFormatter *dateFormatter;
+
 @interface SRCameraRoll ()
 
 // Private interface goes here.
@@ -79,8 +81,13 @@ NSString* const errorDomain = @"com.slowroll.cameraRoll";
 #pragma mark - defaults
 + (NSString *)defaultRollName
 {
+    dateFormatter = [NSDateFormatter new];
+    NSString *formatString = @"yyyy-MM-dd HH:mm:ss";
+    [dateFormatter setDateFormat:formatString];
+    
     NSDate *now = [NSDate date];
-    return [NSString stringWithFormat:@"SlowRoll-%@", now];
+    NSString *nowString = [dateFormatter stringFromDate:now];
+    return [NSString stringWithFormat:@"SlowRoll-%@", nowString];
 }
 
 @end
