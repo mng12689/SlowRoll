@@ -20,6 +20,7 @@ static NSString *photosLeftKeypath = @"cameraRoll.unusedPhotos";
 @property (retain) SRCaptureSessionManager *captureManager;
 @property (nonatomic, strong) SRCameraRoll *cameraRoll;
 
+@property (nonatomic, strong) UIView *captureViewFrame;
 @property (nonatomic, strong) UIButton *captureButton;
 @property (nonatomic, strong) UILabel *rollStatsLabel;
 
@@ -66,13 +67,17 @@ static NSString *photosLeftKeypath = @"cameraRoll.unusedPhotos";
     
     CameraRollStateType rollState = [SRCameraRoll cameraRollStateTypeForAPIState:self.cameraRoll.state];
     if (rollState == CameraRollStateTypeActive) {
+        self.captureViewFrame = [[UIView alloc] initWithFrame:self.view.bounds];
+        [self.view addSubview:self.captureViewFrame];
+        [self.view sendSubviewToBack:self.captureViewFrame];
+        
         self.captureManager = [SRCaptureSessionManager new];
         CGRect layerRect = [[[self view] layer] bounds];
         [self.captureManager addVideoInput];
         [self.captureManager addStillImageOutput];
         [self.captureManager.previewLayer setBounds:layerRect];
         [self.captureManager.previewLayer setPosition:CGPointMake(CGRectGetMidX(layerRect),CGRectGetMidY(layerRect))];
-        [self.view.layer addSublayer:self.captureManager.previewLayer];
+        [self.captureViewFrame.layer addSublayer:self.captureManager.previewLayer];
         
         [self.captureManager.captureSession startRunning];
     } else {
@@ -149,18 +154,15 @@ static NSString *photosLeftKeypath = @"cameraRoll.unusedPhotos";
 
 - (void)animateFlash
 {
-    CALayer *flashLayer = [CALayer layer];
-    flashLayer.frame = self.captureManager.previewLayer.frame;
-    flashLayer.backgroundColor = [[UIColor blueColor] CGColor];
-    [self.captureManager.previewLayer.superlayer addSublayer:flashLayer];
+    UIView *flashView = [[UIView alloc] initWithFrame:self.captureViewFrame.bounds];
+    flashView.backgroundColor = [UIColor whiteColor];
+    [self.captureViewFrame addSubview:flashView];
     
-    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"alpha"];
-    [animation setDuration:.5];
-    animation.toValue = @0;
-    animation.fromValue = @1;
-    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-    [flashLayer addAnimation:animation forKey:@"alpha"];
-    
+    [UIView animateWithDuration:.2 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        flashView.alpha = 0;
+    } completion:^(BOOL finished) {
+        [flashView removeFromSuperview];
+    }];
 }
 
 #pragma mark - KVO
