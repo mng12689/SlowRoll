@@ -43,9 +43,9 @@
 }
 
 #pragma mark - API interactions
-- (void)createCameraRoll
+- (void)createCameraRoll:(NSError **)error
 {
-    if ([self.cameraRollDraft isValid]) {
+    if ([self.cameraRollDraft isValid:error]) {
         [self.editableContext save:nil];
     }
 }

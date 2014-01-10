@@ -6,6 +6,8 @@ NSString* const CameraRollAPIStateFinished = @"finished";
 NSString* const CameraRollAPIPrintTypeColor = @"color";
 NSString* const CameraRollAPIPrintTypeBlackAndWhite = @"black_and_white";
 
+NSString* const errorDomain = @"com.slowroll.cameraRoll";
+
 @interface SRCameraRoll ()
 
 // Private interface goes here.
@@ -47,9 +49,31 @@ NSString* const CameraRollAPIPrintTypeBlackAndWhite = @"black_and_white";
 }
 
 #pragma mark - validation
-- (BOOL)isValid
+- (BOOL)isValid:(NSError **)error
 {
-    return self.name.length && self.printType.length && self.maxPhotos;
+    NSMutableArray *missingFieldNames = [NSMutableArray array];
+    if (!self.name.length) {
+        [missingFieldNames addObject:@"\"name\""];
+    }
+    if (!self.printType.length) {
+        [missingFieldNames addObject:@"\"print type\""];
+    }
+    if (!self.maxPhotos) {
+        [missingFieldNames addObject:@"\"roll size\""];
+    }
+    
+    if (missingFieldNames.count) {
+        NSString *errorMessage = @"Missing required field(s):\n";
+        for (NSInteger index = 0; index < missingFieldNames.count; index++) {
+            errorMessage = [errorMessage stringByAppendingString:missingFieldNames[index]];
+            if (index+1 < missingFieldNames.count) {
+                errorMessage = [errorMessage stringByAppendingString:@", "];
+            }
+        }
+        *error = [NSError errorWithDomain:errorDomain code:CameraRollValidationErrorCodeMissingRequiredFields userInfo:@{NSLocalizedDescriptionKey: errorMessage}];
+    }
+    
+    return error == nil;
 }
 
 #pragma mark - defaults

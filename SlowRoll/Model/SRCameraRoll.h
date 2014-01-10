@@ -16,11 +16,17 @@ typedef NS_ENUM(NSInteger, CameraRollPrintType) {
 extern NSString* const CameraRollAPIPrintTypeColor;
 extern NSString* const CameraRollAPIPrintTypeBlackAndWhite;
 
+extern NSString* const errorDomain;
+
+typedef NS_ENUM(NSInteger, CameraRollValidationErrorCode) {
+    CameraRollValidationErrorCodeMissingRequiredFields
+};
+
 @interface SRCameraRoll : _SRCameraRoll {}
 
 + (CameraRollStateType)cameraRollStateTypeForAPIState:(NSString *)state;
 
-- (BOOL)isValid;
+- (BOOL)isValid:(NSError **)error;
 
 + (NSString *)defaultRollName;
 

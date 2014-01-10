@@ -13,6 +13,6 @@
 
 @property (nonatomic, strong, readonly) SRCameraRoll *cameraRollDraft;
 
-- (void)createCameraRoll;
+- (void)createCameraRoll:(NSError **)error;
 
 @end

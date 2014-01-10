@@ -25,7 +25,7 @@ static NSString *SelectionCellIdentifier = @"SelectionCellID";
 static NSInteger rollSizeSegControlTag = 43290;
 static NSInteger rollTypeSegControlTag = 239520;
 
-@interface SRCreateRollViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface SRCreateRollViewController () <UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 
@@ -223,7 +223,16 @@ static NSInteger rollTypeSegControlTag = 239520;
 #pragma mark - validation
 - (void)createCameraRoll
 {
-    [self.createRollCoordinator createCameraRoll];
+    NSError *error;
+    [self.createRollCoordinator createCameraRoll:&error];
+    
+    
+    if (error) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Invalid Camera Roll" message:error.localizedDescription delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alertView show];
+    } else {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 @end
