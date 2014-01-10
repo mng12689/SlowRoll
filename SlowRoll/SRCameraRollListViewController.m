@@ -22,6 +22,7 @@
 #import "SRAppDelegate.h"
 #import "SRCameraRoll.h"
 #import "SRCreateRollViewController.h"
+#import "SRCaptureViewController.h"
 #import "SRSubtitleCell.h"
 
 static NSString *BasicCellIdentifier = @"basicCellID";
@@ -122,9 +123,17 @@ static NSString *BasicCellIdentifier = @"basicCellID";
     return cell;
 }
 
--(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     return self.fetchedResultsController.sectionIndexTitles[section];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    SRCameraRoll *cameraRoll = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    
+    SRCaptureViewController *captureVC = [[SRCaptureViewController alloc] initWithCameraRoll:cameraRoll];
+    [self.navigationController pushViewController:captureVC animated:YES];
 }
 
 #pragma mark - NSFetchedResultsController delegate methods

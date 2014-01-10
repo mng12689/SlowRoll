@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class SRCameraRoll;
 
 @interface SRCaptureViewController : UIViewController
+
+- (id)initWithCameraRoll:(SRCameraRoll *)cameraRoll;
 
 @end
