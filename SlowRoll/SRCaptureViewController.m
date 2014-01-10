@@ -14,6 +14,7 @@
 #import "UIImage+SRColor.h"
 
 static NSString *photosLeftKeypath = @"cameraRoll.unusedPhotos";
+static NSString *rollStateKeypath = @"cameraRoll.state";
 
 @interface SRCaptureViewController ()
 
@@ -68,6 +69,7 @@ static NSString *photosLeftKeypath = @"cameraRoll.unusedPhotos";
     CameraRollStateType rollState = [SRCameraRoll cameraRollStateTypeForAPIState:self.cameraRoll.state];
     if (rollState == CameraRollStateTypeActive) {
         self.captureViewFrame = [[UIView alloc] initWithFrame:self.view.bounds];
+        self.captureViewFrame.backgroundColor = [UIColor purpleColor];
         [self.view addSubview:self.captureViewFrame];
         [self.view sendSubviewToBack:self.captureViewFrame];
         
@@ -91,12 +93,14 @@ static NSString *photosLeftKeypath = @"cameraRoll.unusedPhotos";
 {
     [self.captureManager.captureSession startRunning];
     [self addObserver:self forKeyPath:photosLeftKeypath options:NSKeyValueObservingOptionInitial|NSKeyValueObservingOptionNew context:NULL];
+    [self addObserver:self forKeyPath:rollStateKeypath options:NSKeyValueObservingOptionNew context:NULL];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
 {
     [self.captureManager.captureSession stopRunning];
     [self removeObserver:self forKeyPath:photosLeftKeypath];
+    [self removeObserver:self forKeyPath:rollStateKeypath];
 }
 
 #pragma mark - custom view methods
@@ -132,6 +136,18 @@ static NSString *photosLeftKeypath = @"cameraRoll.unusedPhotos";
     self.captureButton.enabled = NO;
 }
 
+- (void)transitionToFinishedView
+{
+    [UIView animateWithDuration:.5 animations:^{
+        self.captureViewFrame.alpha = 0;
+        [self setupFinishedView];
+    } completion:^(BOOL finished) {
+        [self.captureViewFrame removeFromSuperview];
+        self.captureViewFrame = nil;
+        self.captureManager = nil;
+    }];
+}
+
 - (void)showMoreOptions
 {
     UIViewController *viewController = [UIViewController new];
@@ -150,6 +166,7 @@ static NSString *photosLeftKeypath = @"cameraRoll.unusedPhotos";
 {
     self.cameraRoll.unusedPhotos = @([self.cameraRoll.unusedPhotos integerValue]-1);
     [self animateFlash];
+    self.cameraRoll.state = CameraRollAPIStateFinished;
 }
 
 - (void)animateFlash
@@ -171,6 +188,10 @@ static NSString *photosLeftKeypath = @"cameraRoll.unusedPhotos";
     if (object == self) {
         if ([keyPath isEqualToString:photosLeftKeypath]) {
             [self updateRollStatsLabel];
+        } else if ([keyPath isEqualToString:rollStateKeypath]) {
+            if ([self.cameraRoll.state isEqualToString:CameraRollAPIStateFinished]) {
+                [self transitionToFinishedView];
+            }
         }
     }
 }
