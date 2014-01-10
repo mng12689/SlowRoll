@@ -37,6 +37,7 @@
 		4C685B351866286500ED860D /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C685B191866286400ED860D /* CoreData.framework */; };
 		4C685B3D1866286500ED860D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C685B3B1866286500ED860D /* InfoPlist.strings */; };
 		4C685B3F1866286500ED860D /* SlowRollTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C685B3E1866286500ED860D /* SlowRollTests.m */; };
+		4CAC9FF818805D63007C0CEC /* UIFont+SRFonts.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAC9FF718805D63007C0CEC /* UIFont+SRFonts.m */; };
 		4CC34FA21868B91500AD02E2 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CC34FA11868B91500AD02E2 /* Crashlytics.framework */; };
 		4CC34FA6186CDFCD00AD02E2 /* SRCameraRollListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CC34FA5186CDFCD00AD02E2 /* SRCameraRollListViewController.m */; };
 		4CC34FA9186CF7D600AD02E2 /* SRCreateRollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CC34FA8186CF7D600AD02E2 /* SRCreateRollViewController.m */; };
@@ -91,6 +92,8 @@
 		4C685B3A1866286500ED860D /* SlowRollTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SlowRollTests-Info.plist"; sourceTree = "<group>"; };
 		4C685B3C1866286500ED860D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4C685B3E1866286500ED860D /* SlowRollTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SlowRollTests.m; sourceTree = "<group>"; };
+		4CAC9FF618805D63007C0CEC /* UIFont+SRFonts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+SRFonts.h"; sourceTree = "<group>"; };
+		4CAC9FF718805D63007C0CEC /* UIFont+SRFonts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+SRFonts.m"; sourceTree = "<group>"; };
 		4CC34FA11868B91500AD02E2 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		4CC34FA4186CDFCD00AD02E2 /* SRCameraRollListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRCameraRollListViewController.h; sourceTree = "<group>"; };
 		4CC34FA5186CDFCD00AD02E2 /* SRCameraRollListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRCameraRollListViewController.m; sourceTree = "<group>"; };
@@ -334,6 +337,8 @@
 				4CC34FDB187A436100AD02E2 /* UIColor+SRColors.m */,
 				4CC34FE1187A459500AD02E2 /* UIImage+SRColor.h */,
 				4CC34FE2187A459500AD02E2 /* UIImage+SRColor.m */,
+				4CAC9FF618805D63007C0CEC /* UIFont+SRFonts.h */,
+				4CAC9FF718805D63007C0CEC /* UIFont+SRFonts.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -525,6 +530,7 @@
 				4CC34FDC187A436100AD02E2 /* UIColor+SRColors.m in Sources */,
 				4CC34FA9186CF7D600AD02E2 /* SRCreateRollViewController.m in Sources */,
 				4CC34FC41874D7F000AD02E2 /* SRRollParticipant.m in Sources */,
+				4CAC9FF818805D63007C0CEC /* UIFont+SRFonts.m in Sources */,
 				4CC34FE0187A450000AD02E2 /* SRSegmentedControl.m in Sources */,
 				4CC34FEA187A623E00AD02E2 /* SRCaptureSessionManager.m in Sources */,
 				4C685B291866286500ED860D /* SlowRoll.xcdatamodeld in Sources */,
