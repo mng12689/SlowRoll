@@ -75,7 +75,7 @@ static NSDateFormatter *dateFormatter;
         *error = [NSError errorWithDomain:errorDomain code:CameraRollValidationErrorCodeMissingRequiredFields userInfo:@{NSLocalizedDescriptionKey: errorMessage}];
     }
     
-    return error == nil;
+    return *error == nil;
 }
 
 #pragma mark - defaults

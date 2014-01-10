@@ -36,21 +36,6 @@ static NSString *BasicCellIdentifier = @"basicCellID";
 @end
 
 @implementation SRCameraRollListViewController
-- (void)addSeedData
-{
-    NSManagedObjectContext *context = [(SRAppDelegate*)[UIApplication sharedApplication].delegate managedObjectContext];
-    for (NSInteger i = 0; i < 3; i++) {
-        NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"SRCameraRoll" inManagedObjectContext:context];
-        SRCameraRoll *roll = (SRCameraRoll*)[[NSManagedObject alloc] initWithEntity:entityDescription insertIntoManagedObjectContext:context];
-        roll.name = [NSString stringWithFormat:@"Camera Roll %i", i];
-        if (i%2) {
-            roll.state = @"active";
-        } else {
-            roll.state = @"finished";
-        }
-    }
-    [context save:nil];
-}
 
 #pragma mark - lifecycle
 
@@ -65,9 +50,7 @@ static NSString *BasicCellIdentifier = @"basicCellID";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	
-    //[self addSeedData];
-    
+	    
     UITableView *tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
     tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
     tableView.delegate = self;
