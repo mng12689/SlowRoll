@@ -24,6 +24,7 @@
 #import "SRCreateRollViewController.h"
 #import "SRCaptureViewController.h"
 #import "SRSubtitleCell.h"
+#import "UIColor+SRColors.h"
 
 static NSString *BasicCellIdentifier = @"basicCellID";
 
@@ -93,6 +94,16 @@ static NSString *BasicCellIdentifier = @"basicCellID";
     self.navigationItem.rightBarButtonItem = addButtonItem;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    if (indexPath) {
+        [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
+    }
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -122,11 +133,14 @@ static NSString *BasicCellIdentifier = @"basicCellID";
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 
     cell.textLabel.text = cameraRoll.name;
+    cell.textLabel.highlightedTextColor = [UIColor whiteColor];
+    
     cell.detailTextLabel.text = [NSString stringWithFormat:@"You have %i pictures left to take\n%@ took a picture 37 minutes ago", 1, @"Rob"];
     cell.detailTextLabel.numberOfLines = 2;
-    
+    cell.detailTextLabel.highlightedTextColor = [UIColor whiteColor];
+
     UIView *backgroundView = [[UIView alloc] initWithFrame:cell.contentView.bounds];
-    backgroundView.backgroundColor = [UIColor colorWithRed:0 green:1 blue:0 alpha:.1];
+    backgroundView.backgroundColor = [UIColor SRGreen];
     cell.selectedBackgroundView = backgroundView;
     
     return cell;
