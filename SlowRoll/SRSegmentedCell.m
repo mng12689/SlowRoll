@@ -8,7 +8,6 @@
 
 #import "SRSegmentedCell.h"
 #import "SRSegmentedControl.h"
-#import "UIFont+SRFonts.h"
 
 @interface SRSegmentedCell ()
 
@@ -23,8 +22,6 @@
     if (!_segmentedControl) {
         _segmentedControl = [[SRSegmentedControl alloc] initWithFrame:self.contentView.bounds];
         _segmentedControl.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
-        NSDictionary *titleTextAttributes = @{NSFontAttributeName : [UIFont futuraFontWithSize:18]};
-        [_segmentedControl setTitleTextAttributes:titleTextAttributes forState:UIControlStateNormal];
         [self.contentView addSubview:_segmentedControl];
     }
     return _segmentedControl;

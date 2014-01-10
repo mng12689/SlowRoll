@@ -9,6 +9,7 @@
 #import "SRSegmentedControl.h"
 #import "UIColor+SRColors.h"
 #import "UIImage+SRColor.h"
+#import "UIFont+SRFonts.h"
 
 @implementation SRSegmentedControl
 
@@ -19,8 +20,10 @@
         [self setBackgroundImage:[UIImage imageWithColor:[UIColor SRGreen]] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
         [self setTintColor:[UIColor whiteColor]];
         [self setDividerImage:[UIImage imageWithColor:[UIColor clearColor]] forLeftSegmentState:UIControlStateNormal rightSegmentState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-        //NSDictionary *textDictionary = @{NSFontAttributeName : }
-        //[self setTitleTextAttributes:textDictionary forState:UIControlStateNormal];
+        NSDictionary *titleTextAttributes = @{NSFontAttributeName : [UIFont futuraFontWithSize:18],
+                                              NSForegroundColorAttributeName : [UIColor whiteColor]};
+        [self setTitleTextAttributes:titleTextAttributes forState:UIControlStateNormal];
+        [self setTitleTextAttributes:titleTextAttributes forState:UIControlStateSelected];
     }
     return self;
 }
