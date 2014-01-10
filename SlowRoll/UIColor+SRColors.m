@@ -7,12 +7,13 @@
 //
 
 #import "UIColor+SRColors.h"
+#import "UIColor+Hex.h"
 
 @implementation UIColor (SRColors)
 
 + (UIColor *)SRGreen
 {
-    return [UIColor greenColor];
+    return [UIColor colorWithHex:0x52B869];
 }
 
 @end

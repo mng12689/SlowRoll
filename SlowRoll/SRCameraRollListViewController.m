@@ -52,6 +52,15 @@ static NSString *BasicCellIdentifier = @"basicCellID";
 }
 
 #pragma mark - lifecycle
+
+- (id)init
+{
+    if (self = [super init]) {
+        self.title = NSLocalizedString(@"slowroll", @"title fo camera roll list view controller");
+    }
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
