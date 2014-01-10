@@ -12,6 +12,7 @@
 #import "SRCameraRollListViewController.h"
 #import "UIImage+SRColor.h"
 #import "UIColor+SRColors.h"
+#import "UIFont+SRFonts.h"
 
 @implementation SRAppDelegate
 
@@ -163,6 +164,9 @@
 {
     [[UINavigationBar appearance] setBackgroundImage:[UIImage imageWithColor:[UIColor SRGreen]] forBarMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    NSDictionary *titleTextAttributes = @{NSFontAttributeName : [UIFont futuraFontWithSize:22],
+                                          NSForegroundColorAttributeName : [UIColor whiteColor]};
+    [[UINavigationBar appearance] setTitleTextAttributes:titleTextAttributes];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 }
 
