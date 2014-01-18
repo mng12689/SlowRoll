@@ -12,6 +12,7 @@
 #import "SRCameraRoll.h"
 #import "UIColor+SRColors.h"
 #import "UIImage+SRColor.h"
+#import "UIFont+SRFonts.h"
 #import "SRDeliveryOptionsViewController.h"
 
 static NSString *photosLeftKeypath = @"cameraRoll.unusedPhotos";
@@ -40,7 +41,9 @@ static NSString *rollStateKeypath = @"cameraRoll.state";
 
 - (void)viewDidLoad
 {
-    self.view.backgroundColor = [UIColor grayColor];
+    [super viewDidLoad];
+    
+    self.view.backgroundColor = [UIColor blackColor];
     
     NSInteger captureButtonHeight = 50;
     NSInteger bottomPadding = 15;
@@ -81,8 +84,6 @@ static NSString *rollStateKeypath = @"cameraRoll.state";
         [self.captureManager.previewLayer setBounds:layerRect];
         [self.captureManager.previewLayer setPosition:CGPointMake(CGRectGetMidX(layerRect),CGRectGetMidY(layerRect))];
         [self.captureViewFrame.layer addSublayer:self.captureManager.previewLayer];
-        
-        [self.captureManager.captureSession startRunning];
     } else {
         [self setupFinishedView];
     }
@@ -120,33 +121,42 @@ static NSString *rollStateKeypath = @"cameraRoll.state";
 
 - (void)setupFinishedView
 {
-    UIButton *purchaseOrderButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    NSInteger buttonWidth = self.view.frame.size.width;
+    NSInteger buttonHeight = 50;
+    UIButton *purchaseOrderButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2 - buttonWidth/2,
+                                                                              self.view.frame.size.height/2 - buttonHeight/2,
+                                                                              buttonWidth,
+                                                                              buttonHeight)];
     [purchaseOrderButton addTarget:self action:@selector(presentPurchaseOrderStack) forControlEvents:UIControlEventTouchUpInside];
     [purchaseOrderButton setBackgroundColor:[UIColor SRGreen]];
     [purchaseOrderButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [purchaseOrderButton setTitle:@"Order Now!" forState:UIControlStateNormal];
-    purchaseOrderButton.layer.cornerRadius = 4;
+    purchaseOrderButton.titleLabel.font = [UIFont futuraFontWithSize:26];
     
-    NSInteger buttonWidth = self.view.frame.size.width/2;
-    NSInteger buttonHeight = 50;
-    purchaseOrderButton.frame = CGRectMake(self.view.frame.size.width/2 - buttonWidth/2,
-                                           self.view.frame.size.height/2 - buttonHeight/2,
-                                           buttonWidth,
-                                           buttonHeight);
     [self.view addSubview:purchaseOrderButton];
     
     self.captureButton.enabled = NO;
+    
+    UIFont *completeLabelFont = [UIFont futuraFontWithSize:22];
+    UILabel *completeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, purchaseOrderButton.frame.origin.y-60, self.view.frame.size.width, completeLabelFont.lineHeight)];
+    completeLabel.textColor = [UIColor whiteColor];
+    completeLabel.font = completeLabelFont;
+    completeLabel.textAlignment = NSTextAlignmentCenter;
+    completeLabel.text = NSLocalizedString(@"roll finished", @"label on capture vc view to warn user that roll is already finished");
+    [self.view addSubview:completeLabel];
 }
 
 - (void)transitionToFinishedView
 {
     [UIView animateWithDuration:.5 animations:^{
         self.captureViewFrame.alpha = 0;
-        [self setupFinishedView];
     } completion:^(BOOL finished) {
         [self.captureViewFrame removeFromSuperview];
         self.captureViewFrame = nil;
         self.captureManager = nil;
+        [UIView animateWithDuration:.5 animations:^{
+            [self setupFinishedView];
+        }];
     }];
 }
 
