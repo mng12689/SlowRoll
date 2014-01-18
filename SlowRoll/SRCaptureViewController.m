@@ -12,6 +12,7 @@
 #import "SRCameraRoll.h"
 #import "UIColor+SRColors.h"
 #import "UIImage+SRColor.h"
+#import "SRDeliveryOptionsViewController.h"
 
 static NSString *photosLeftKeypath = @"cameraRoll.unusedPhotos";
 static NSString *rollStateKeypath = @"cameraRoll.state";
@@ -120,6 +121,7 @@ static NSString *rollStateKeypath = @"cameraRoll.state";
 - (void)setupFinishedView
 {
     UIButton *purchaseOrderButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [purchaseOrderButton addTarget:self action:@selector(presentPurchaseOrderStack) forControlEvents:UIControlEventTouchUpInside];
     [purchaseOrderButton setBackgroundColor:[UIColor SRGreen]];
     [purchaseOrderButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [purchaseOrderButton setTitle:@"Order Now!" forState:UIControlStateNormal];
@@ -152,13 +154,20 @@ static NSString *rollStateKeypath = @"cameraRoll.state";
 {
     UIViewController *viewController = [UIViewController new];
     viewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-    viewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCamera target:self action:@selector(dismissMoreOptions)];
+    viewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCamera target:self action:@selector(dismissModal)];
     [self presentViewController:[[UINavigationController alloc] initWithRootViewController:viewController] animated:YES completion:nil];
 }
 
-- (void)dismissMoreOptions
+- (void)dismissModal
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)presentPurchaseOrderStack
+{
+    SRDeliveryOptionsViewController *deliveryOptionsVC = [SRDeliveryOptionsViewController new];
+    deliveryOptionsVC.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismissModal)];
+    [self presentViewController:[[UINavigationController alloc] initWithRootViewController:deliveryOptionsVC] animated:YES completion:nil];
 }
 
 #pragma mark - camera

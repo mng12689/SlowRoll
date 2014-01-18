@@ -38,6 +38,8 @@
 		4C685B3D1866286500ED860D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C685B3B1866286500ED860D /* InfoPlist.strings */; };
 		4C685B3F1866286500ED860D /* SlowRollTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C685B3E1866286500ED860D /* SlowRollTests.m */; };
 		4CAC9FF818805D63007C0CEC /* UIFont+SRFonts.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAC9FF718805D63007C0CEC /* UIFont+SRFonts.m */; };
+		4CAC9FFB188B18EF007C0CEC /* SRDeliveryOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAC9FFA188B18EF007C0CEC /* SRDeliveryOptionsViewController.m */; };
+		4CAC9FFE188B19F2007C0CEC /* SRDeliveryOptionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAC9FFD188B19F2007C0CEC /* SRDeliveryOptionCell.m */; };
 		4CC34FA21868B91500AD02E2 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CC34FA11868B91500AD02E2 /* Crashlytics.framework */; };
 		4CC34FA6186CDFCD00AD02E2 /* SRCameraRollListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CC34FA5186CDFCD00AD02E2 /* SRCameraRollListViewController.m */; };
 		4CC34FA9186CF7D600AD02E2 /* SRCreateRollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CC34FA8186CF7D600AD02E2 /* SRCreateRollViewController.m */; };
@@ -94,6 +96,10 @@
 		4C685B3E1866286500ED860D /* SlowRollTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SlowRollTests.m; sourceTree = "<group>"; };
 		4CAC9FF618805D63007C0CEC /* UIFont+SRFonts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+SRFonts.h"; sourceTree = "<group>"; };
 		4CAC9FF718805D63007C0CEC /* UIFont+SRFonts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+SRFonts.m"; sourceTree = "<group>"; };
+		4CAC9FF9188B18EF007C0CEC /* SRDeliveryOptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRDeliveryOptionsViewController.h; sourceTree = "<group>"; };
+		4CAC9FFA188B18EF007C0CEC /* SRDeliveryOptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRDeliveryOptionsViewController.m; sourceTree = "<group>"; };
+		4CAC9FFC188B19F2007C0CEC /* SRDeliveryOptionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRDeliveryOptionCell.h; sourceTree = "<group>"; };
+		4CAC9FFD188B19F2007C0CEC /* SRDeliveryOptionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRDeliveryOptionCell.m; sourceTree = "<group>"; };
 		4CC34FA11868B91500AD02E2 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		4CC34FA4186CDFCD00AD02E2 /* SRCameraRollListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRCameraRollListViewController.h; sourceTree = "<group>"; };
 		4CC34FA5186CDFCD00AD02E2 /* SRCameraRollListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRCameraRollListViewController.m; sourceTree = "<group>"; };
@@ -278,6 +284,8 @@
 				4CC34FA8186CF7D600AD02E2 /* SRCreateRollViewController.m */,
 				4CC34FCD187A14AC00AD02E2 /* SRCreateRollCoordinator.h */,
 				4CC34FCE187A14AC00AD02E2 /* SRCreateRollCoordinator.m */,
+				4CAC9FF9188B18EF007C0CEC /* SRDeliveryOptionsViewController.h */,
+				4CAC9FFA188B18EF007C0CEC /* SRDeliveryOptionsViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -326,6 +334,8 @@
 				4CC34FD1187A160800AD02E2 /* SREditableCell.m */,
 				4CC34FD6187A191000AD02E2 /* SRSegmentedCell.h */,
 				4CC34FD7187A191000AD02E2 /* SRSegmentedCell.m */,
+				4CAC9FFC188B19F2007C0CEC /* SRDeliveryOptionCell.h */,
+				4CAC9FFD188B19F2007C0CEC /* SRDeliveryOptionCell.m */,
 			);
 			name = "Custom Cells";
 			sourceTree = "<group>";
@@ -531,6 +541,7 @@
 				4CC34FA9186CF7D600AD02E2 /* SRCreateRollViewController.m in Sources */,
 				4CC34FC41874D7F000AD02E2 /* SRRollParticipant.m in Sources */,
 				4CAC9FF818805D63007C0CEC /* UIFont+SRFonts.m in Sources */,
+				4CAC9FFB188B18EF007C0CEC /* SRDeliveryOptionsViewController.m in Sources */,
 				4CC34FE0187A450000AD02E2 /* SRSegmentedControl.m in Sources */,
 				4CC34FEA187A623E00AD02E2 /* SRCaptureSessionManager.m in Sources */,
 				4C685B291866286500ED860D /* SlowRoll.xcdatamodeld in Sources */,
@@ -540,6 +551,7 @@
 				4CC34FC21874D7F000AD02E2 /* SRCameraRoll.m in Sources */,
 				4C36706818673FD100BDC5F5 /* SRRestKitManager.m in Sources */,
 				4CC34FC81875063300AD02E2 /* SRSubtitleCell.m in Sources */,
+				4CAC9FFE188B19F2007C0CEC /* SRDeliveryOptionCell.m in Sources */,
 				4CC34FE9187A623E00AD02E2 /* SRCaptureViewController.m in Sources */,
 				4CC34FD8187A191000AD02E2 /* SRSegmentedCell.m in Sources */,
 				4CC34FB81874D7B900AD02E2 /* _SRPurchaseOrder.m in Sources */,
