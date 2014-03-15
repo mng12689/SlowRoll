@@ -76,8 +76,8 @@ static NSInteger rollTypeSegControlTag = 239520;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CreateSectionType sectionType = [self sectionTypeForSection:indexPath.section];
-    NSString *cellIdentifier = [self cellIdentifierForSectionType:sectionType];
+    CreateSectionType sectionType = [SRCreateRollViewController sectionTypeForSection:indexPath.section];
+    NSString *cellIdentifier = [SRCreateRollViewController cellIdentifierForSectionType:sectionType];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     cell.backgroundColor = [UIColor blackColor];
     switch (sectionType) {
@@ -93,11 +93,13 @@ static NSInteger rollTypeSegControlTag = 239520;
         case CreateSectionTypeRollSize:{
             SRSegmentedCell *segmentedCell = (SRSegmentedCell *)cell;
             segmentedCell.segmentedControl.tag = rollSizeSegControlTag;
-            [segmentedCell.segmentedControl removeTarget:self action:@selector(segmentedControlChanged:) forControlEvents:UIControlEventValueChanged];
-            [segmentedCell.segmentedControl addTarget:self action:@selector(segmentedControlChanged:) forControlEvents:UIControlEventValueChanged];
-            [segmentedCell.segmentedControl removeAllSegments];
-            [segmentedCell.segmentedControl insertSegmentWithTitle:@"24" atIndex:0 animated:NO];
-            [segmentedCell.segmentedControl insertSegmentWithTitle:@"10" atIndex:0 animated:NO];
+            
+            // if we havent set up the segmented control yet...
+            if (segmentedCell.segmentedControl.numberOfSegments == 0) {
+                [segmentedCell.segmentedControl insertSegmentWithTitle:@"24" atIndex:0 animated:NO];
+                [segmentedCell.segmentedControl insertSegmentWithTitle:@"10" atIndex:0 animated:NO];
+                [segmentedCell.segmentedControl addTarget:self action:@selector(segmentedControlChanged:) forControlEvents:UIControlEventValueChanged];
+            }
             if ([self.createRollCoordinator.cameraRollDraft.maxPhotos integerValue] == 10) {
                 segmentedCell.segmentedControl.selectedSegmentIndex = 0;
             } else if ([self.createRollCoordinator.cameraRollDraft.maxPhotos integerValue] == 24) {
@@ -110,11 +112,11 @@ static NSInteger rollTypeSegControlTag = 239520;
         case CreateSectionTypeRollType:{
             SRSegmentedCell *segmentedCell = (SRSegmentedCell *)cell;
             segmentedCell.segmentedControl.tag = rollTypeSegControlTag;
-            [segmentedCell.segmentedControl removeTarget:self action:@selector(segmentedControlChanged:) forControlEvents:UIControlEventValueChanged];
-            [segmentedCell.segmentedControl addTarget:self action:@selector(segmentedControlChanged:) forControlEvents:UIControlEventValueChanged];
-            [segmentedCell.segmentedControl removeAllSegments];
-            [segmentedCell.segmentedControl insertSegmentWithTitle:@"b&w" atIndex:0 animated:NO];
-            [segmentedCell.segmentedControl insertSegmentWithTitle:@"color" atIndex:0 animated:NO];
+            if (segmentedCell.segmentedControl.numberOfSegments == 0) {
+                [segmentedCell.segmentedControl insertSegmentWithTitle:@"b&w" atIndex:0 animated:NO];
+                [segmentedCell.segmentedControl insertSegmentWithTitle:@"color" atIndex:0 animated:NO];
+                [segmentedCell.segmentedControl addTarget:self action:@selector(segmentedControlChanged:) forControlEvents:UIControlEventValueChanged];
+            }
             if ([self.createRollCoordinator.cameraRollDraft.printType isEqualToString:CameraRollAPIPrintTypeColor]) {
                 segmentedCell.segmentedControl.selectedSegmentIndex = 0;
             } else if ([self.createRollCoordinator.cameraRollDraft.printType isEqualToString:CameraRollAPIPrintTypeBlackAndWhite]) {
@@ -130,7 +132,7 @@ static NSInteger rollTypeSegControlTag = 239520;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CreateSectionType sectionType = [self sectionTypeForSection:indexPath.section];
+    CreateSectionType sectionType = [SRCreateRollViewController sectionTypeForSection:indexPath.section];
     switch (sectionType) {
         case CreateSectionTypeRollName: return 30;
         case CreateSectionTypeRollSize: return 50;
@@ -146,23 +148,28 @@ static NSInteger rollTypeSegControlTag = 239520;
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    CreateSectionType sectionType = [self sectionTypeForSection:section];
+    CreateSectionType sectionType = [SRCreateRollViewController sectionTypeForSection:section];
     
     UILabel *label = [UILabel new];
     label.textAlignment = NSTextAlignmentCenter;
     label.textColor = [UIColor whiteColor];
     label.backgroundColor = [UIColor clearColor];
-    label.text = [self sectionTitleForSectionType:sectionType];
+    label.text = [SRCreateRollViewController sectionTitleForSectionType:sectionType];
     return label;
 }
 
 #pragma mark - table view helpers
-- (CreateSectionType)sectionTypeForSection:(NSInteger)section
++ (CreateSectionType)sectionTypeForSection:(NSInteger)section
 {
-    return section;
+    switch (section) {
+        case 0: return CreateSectionTypeRollName;
+        case 1: return CreateSectionTypeRollType;
+        case 2: return CreateSectionTypeRollSize;
+        default: return -1;
+    };
 }
 
-- (NSString *)sectionTitleForSectionType:(CreateSectionType)sectionType
++ (NSString *)sectionTitleForSectionType:(CreateSectionType)sectionType
 {
     switch (sectionType) {
         case CreateSectionTypeRollName: return @"Enter roll name";
@@ -171,7 +178,7 @@ static NSInteger rollTypeSegControlTag = 239520;
     }
 }
 
-- (NSString *)cellIdentifierForSectionType:(CreateSectionType)sectionType
++ (NSString *)cellIdentifierForSectionType:(CreateSectionType)sectionType
 {
     switch (sectionType) {
         case CreateSectionTypeRollName:
@@ -223,6 +230,8 @@ static NSInteger rollTypeSegControlTag = 239520;
 #pragma mark - validation
 - (void)createCameraRoll
 {
+    //right now this method is set up to simply create a camera roll obj in Core Data. once we have an API, this will send a POST request
+    //to the API to create a camera roll obj on the server
     NSError *error;
     [self.createRollCoordinator createCameraRoll:&error];
     

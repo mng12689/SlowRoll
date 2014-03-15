@@ -345,10 +345,10 @@
 			children = (
 				4CC34FDA187A436100AD02E2 /* UIColor+SRColors.h */,
 				4CC34FDB187A436100AD02E2 /* UIColor+SRColors.m */,
-				4CC34FE1187A459500AD02E2 /* UIImage+SRColor.h */,
-				4CC34FE2187A459500AD02E2 /* UIImage+SRColor.m */,
 				4CAC9FF618805D63007C0CEC /* UIFont+SRFonts.h */,
 				4CAC9FF718805D63007C0CEC /* UIFont+SRFonts.m */,
+				4CC34FE1187A459500AD02E2 /* UIImage+SRColor.h */,
+				4CC34FE2187A459500AD02E2 /* UIImage+SRColor.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";

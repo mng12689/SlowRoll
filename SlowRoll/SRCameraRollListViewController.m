@@ -65,7 +65,9 @@ static NSString *BasicCellIdentifier = @"basicCellID";
     
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:NSStringFromClass([SRCameraRoll class])];
     NSSortDescriptor *stateSortDescriptor = [[NSSortDescriptor alloc] initWithKey:SRCameraRollAttributes.stateSortPrecedence ascending:YES];
-    NSSortDescriptor *lastPhotoTakenSortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:NO];
+    
+    // update this sort descriptor to use updatedAt property instead of name once we have accurate updated at info for the camera roll
+    NSSortDescriptor *lastPhotoTakenSortDescriptor = [[NSSortDescriptor alloc] initWithKey:SRCameraRollAttributes.name ascending:NO];
     [fetchRequest setSortDescriptors:@[stateSortDescriptor,lastPhotoTakenSortDescriptor]];
     self.fetchedResultsController = [[SRCameraRollListFetchedResultsController alloc] initWithFetchRequest:fetchRequest
                                                                         managedObjectContext:MOC
@@ -85,12 +87,6 @@ static NSString *BasicCellIdentifier = @"basicCellID";
     if (indexPath) {
         [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
     }
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - UITableView delegate and data source methods
@@ -118,6 +114,7 @@ static NSString *BasicCellIdentifier = @"basicCellID";
     cell.textLabel.text = cameraRoll.name;
     cell.textLabel.highlightedTextColor = [UIColor whiteColor];
     
+    // dummy data until we have an API
     cell.detailTextLabel.text = [NSString stringWithFormat:@"You have %i pictures left to take\n%@ took a picture 37 minutes ago", 1, @"Rob"];
     cell.detailTextLabel.numberOfLines = 2;
     cell.detailTextLabel.highlightedTextColor = [UIColor whiteColor];

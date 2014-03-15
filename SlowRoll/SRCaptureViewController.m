@@ -45,8 +45,8 @@ static NSString *rollStateKeypath = @"cameraRoll.state";
     
     self.view.backgroundColor = [UIColor blackColor];
     
-    NSInteger captureButtonHeight = 50;
-    NSInteger bottomPadding = 15;
+    static NSInteger captureButtonHeight = 50;
+    static NSInteger bottomPadding = 15;
     UIButton *captureButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [captureButton setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithRed:1 green:0 blue:0 alpha:1]] forState:UIControlStateNormal];
     [captureButton setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithRed:1 green:0 blue:0 alpha:.2]] forState:UIControlStateDisabled];
@@ -57,7 +57,7 @@ static NSString *rollStateKeypath = @"cameraRoll.state";
                                       captureButtonHeight);
     captureButton.layer.borderColor = [[UIColor whiteColor] CGColor];
     captureButton.layer.borderWidth = 1;
-    captureButton.layer.cornerRadius = captureButtonHeight/2;
+    captureButton.layer.cornerRadius = captureButton.frame.size.height/2;
     captureButton.layer.masksToBounds = YES;
     [captureButton addTarget:self action:@selector(captureStillImage) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:captureButton];
@@ -91,14 +91,14 @@ static NSString *rollStateKeypath = @"cameraRoll.state";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(showMoreOptions)];
 }
 
--(void)viewWillAppear:(BOOL)animated
+- (void)viewWillAppear:(BOOL)animated
 {
     [self.captureManager.captureSession startRunning];
     [self addObserver:self forKeyPath:photosLeftKeypath options:NSKeyValueObservingOptionInitial|NSKeyValueObservingOptionNew context:NULL];
     [self addObserver:self forKeyPath:rollStateKeypath options:NSKeyValueObservingOptionNew context:NULL];
 }
 
--(void)viewWillDisappear:(BOOL)animated
+- (void)viewWillDisappear:(BOOL)animated
 {
     [self.captureManager.captureSession stopRunning];
     [self removeObserver:self forKeyPath:photosLeftKeypath];
@@ -108,8 +108,8 @@ static NSString *rollStateKeypath = @"cameraRoll.state";
 #pragma mark - custom view methods
 - (void)updateRollStatsLabel
 {
-    NSInteger horizontalPadding = 10;
-    NSInteger bottomPadding = 15;
+    static NSInteger horizontalPadding = 10;
+    static NSInteger bottomPadding = 15;
     
     self.rollStatsLabel.text = [NSString stringWithFormat:@"Photos Left: %@\nRoll Size: %@\nPrint Type: %@", [self.cameraRoll.unusedPhotos stringValue], [self.cameraRoll.maxPhotos stringValue], self.cameraRoll.printType];
     [self.rollStatsLabel sizeToFit];
@@ -122,7 +122,7 @@ static NSString *rollStateKeypath = @"cameraRoll.state";
 - (void)setupFinishedView
 {
     NSInteger buttonWidth = self.view.frame.size.width;
-    NSInteger buttonHeight = 50;
+    static NSInteger buttonHeight = 50;
     UIButton *purchaseOrderButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2 - buttonWidth/2,
                                                                               self.view.frame.size.height/2 - buttonHeight/2,
                                                                               buttonWidth,
@@ -162,6 +162,7 @@ static NSString *rollStateKeypath = @"cameraRoll.state";
 
 - (void)showMoreOptions
 {
+    // placeholder for more options vc
     UIViewController *viewController = [UIViewController new];
     viewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     viewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCamera target:self action:@selector(dismissModal)];
@@ -185,7 +186,9 @@ static NSString *rollStateKeypath = @"cameraRoll.state";
 {
     self.cameraRoll.unusedPhotos = @([self.cameraRoll.unusedPhotos integerValue]-1);
     [self animateFlash];
-    self.cameraRoll.state = CameraRollAPIStateFinished;
+    if ([self.cameraRoll.unusedPhotos integerValue] <= 0) {
+        self.cameraRoll.state = CameraRollAPIStateFinished;
+    }
 }
 
 - (void)animateFlash

@@ -32,12 +32,13 @@
 {
     [super layoutSubviews];
     
-    NSInteger margin = 25;
+    static NSInteger margin = 25;
     
     CGSize descLabelSize = [self.descriptionLabel sizeThatFits:CGSizeMake(self.contentView.frame.size.width/2-margin, NSIntegerMax)];
     self.descriptionLabel.frame = CGRectMake(margin, margin, descLabelSize.width, descLabelSize.height);
     
-    self.iconImageView.frame = CGRectMake(self.contentView.frame.size.width-70-margin, margin, 70, 70);//CGRectMake(self.contentView.bounds.size.width-_iconImageView.image.size.width-margin, margin, _iconImageView.image.size.width, _iconImageView.image.size.height);
+    static NSInteger iconSideLength = 70;
+    self.iconImageView.frame = CGRectMake(self.contentView.frame.size.width-iconSideLength-margin, margin, iconSideLength, iconSideLength);
     
     [self.priceLabel sizeToFit];
     self.priceLabel.center = self.iconImageView.center;

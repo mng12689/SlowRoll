@@ -11,7 +11,7 @@
 #import "UIColor+SRColors.h"
 #import "UIFont+SRFonts.h"
 
-static NSString *OptionCellIdentifier = @"optionCell";
+static NSString *OptionCellIdentifier = @"OptionCellID";
 
 typedef NS_ENUM(NSInteger, SectionType) {
     SectionTypeMailOption,
@@ -68,7 +68,7 @@ typedef NS_ENUM(NSInteger, SectionType) {
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    SectionType sectionType = [self sectionTypeForSection:indexPath.section];
+    SectionType sectionType = [SRDeliveryOptionsViewController sectionTypeForSection:indexPath.section];
     
     SRDeliveryOptionCell *cell = [tableView dequeueReusableCellWithIdentifier:OptionCellIdentifier];
     switch (sectionType) {
@@ -88,7 +88,7 @@ typedef NS_ENUM(NSInteger, SectionType) {
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    SectionType sectionType = [self sectionTypeForSection:section];
+    SectionType sectionType = [SRDeliveryOptionsViewController sectionTypeForSection:section];
     
     UILabel *header = [UILabel new];
     header.textColor = [UIColor whiteColor];
@@ -105,12 +105,12 @@ typedef NS_ENUM(NSInteger, SectionType) {
 }
 
 #pragma mark - table view helpers
-- (SectionType)sectionTypeForSection:(NSInteger)section
++ (SectionType)sectionTypeForSection:(NSInteger)section
 {
     switch (section) {
         case 0: return SectionTypeMailOption;
         case 1: return SectionTypeDigitalOption;
-        default: return 0;
+        default: return -1;
     }
 }
 

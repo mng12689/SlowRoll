@@ -26,7 +26,7 @@
         NSEntityDescription *entityDescription = [NSEntityDescription entityForName:NSStringFromClass([SRCameraRoll class]) inManagedObjectContext:self.editableContext];
         _cameraRollDraft = (SRCameraRoll*)[[NSManagedObject alloc] initWithEntity:entityDescription insertIntoManagedObjectContext:self.editableContext];
         _cameraRollDraft.name = [SRCameraRoll defaultRollName];
-        _cameraRollDraft.state = @"active"; //REMOVE THIS WHEN WE HAVE AN API
+        _cameraRollDraft.state = @"active"; //REMOVE THIS WHEN WE HAVE AN API, the API response will give us the state and we will map that response
     }
     return _cameraRollDraft;
 }
