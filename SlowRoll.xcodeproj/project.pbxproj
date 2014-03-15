@@ -55,7 +55,7 @@
 		4CC34FD8187A191000AD02E2 /* SRSegmentedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CC34FD7187A191000AD02E2 /* SRSegmentedCell.m */; };
 		4CC34FDC187A436100AD02E2 /* UIColor+SRColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CC34FDB187A436100AD02E2 /* UIColor+SRColors.m */; };
 		4CC34FE0187A450000AD02E2 /* SRSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CC34FDF187A450000AD02E2 /* SRSegmentedControl.m */; };
-		4CC34FE3187A459500AD02E2 /* UIImage+SRColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CC34FE2187A459500AD02E2 /* UIImage+SRColor.m */; };
+		4CC34FE3187A459500AD02E2 /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CC34FE2187A459500AD02E2 /* UIImage+Color.m */; };
 		4CC34FE9187A623E00AD02E2 /* SRCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CC34FE6187A623E00AD02E2 /* SRCaptureViewController.m */; };
 		4CC34FEA187A623E00AD02E2 /* SRCaptureSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CC34FE8187A623E00AD02E2 /* SRCaptureSessionManager.m */; };
 		CFDEBD76A4464015A6996773 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3201D1097F014222AAAFA51F /* libPods.a */; };
@@ -130,8 +130,8 @@
 		4CC34FDB187A436100AD02E2 /* UIColor+SRColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+SRColors.m"; sourceTree = "<group>"; };
 		4CC34FDE187A450000AD02E2 /* SRSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRSegmentedControl.h; sourceTree = "<group>"; };
 		4CC34FDF187A450000AD02E2 /* SRSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRSegmentedControl.m; sourceTree = "<group>"; };
-		4CC34FE1187A459500AD02E2 /* UIImage+SRColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+SRColor.h"; sourceTree = "<group>"; };
-		4CC34FE2187A459500AD02E2 /* UIImage+SRColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+SRColor.m"; sourceTree = "<group>"; };
+		4CC34FE1187A459500AD02E2 /* UIImage+Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Color.h"; sourceTree = "<group>"; };
+		4CC34FE2187A459500AD02E2 /* UIImage+Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Color.m"; sourceTree = "<group>"; };
 		4CC34FE5187A623E00AD02E2 /* SRCaptureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRCaptureViewController.h; sourceTree = "<group>"; };
 		4CC34FE6187A623E00AD02E2 /* SRCaptureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRCaptureViewController.m; sourceTree = "<group>"; };
 		4CC34FE7187A623E00AD02E2 /* SRCaptureSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRCaptureSessionManager.h; sourceTree = "<group>"; };
@@ -343,12 +343,8 @@
 		4CC34FD9187A432900AD02E2 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				4CC34FDA187A436100AD02E2 /* UIColor+SRColors.h */,
-				4CC34FDB187A436100AD02E2 /* UIColor+SRColors.m */,
-				4CAC9FF618805D63007C0CEC /* UIFont+SRFonts.h */,
-				4CAC9FF718805D63007C0CEC /* UIFont+SRFonts.m */,
-				4CC34FE1187A459500AD02E2 /* UIImage+SRColor.h */,
-				4CC34FE2187A459500AD02E2 /* UIImage+SRColor.m */,
+				4CE8E85718D4AAA500E622B6 /* SR Specific Categories */,
+				4CE8E85818D4AAB200E622B6 /* Generic Categories */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -371,6 +367,26 @@
 				4CC34FE8187A623E00AD02E2 /* SRCaptureSessionManager.m */,
 			);
 			name = Camera;
+			sourceTree = "<group>";
+		};
+		4CE8E85718D4AAA500E622B6 /* SR Specific Categories */ = {
+			isa = PBXGroup;
+			children = (
+				4CC34FDA187A436100AD02E2 /* UIColor+SRColors.h */,
+				4CC34FDB187A436100AD02E2 /* UIColor+SRColors.m */,
+				4CAC9FF618805D63007C0CEC /* UIFont+SRFonts.h */,
+				4CAC9FF718805D63007C0CEC /* UIFont+SRFonts.m */,
+			);
+			name = "SR Specific Categories";
+			sourceTree = "<group>";
+		};
+		4CE8E85818D4AAB200E622B6 /* Generic Categories */ = {
+			isa = PBXGroup;
+			children = (
+				4CC34FE1187A459500AD02E2 /* UIImage+Color.h */,
+				4CC34FE2187A459500AD02E2 /* UIImage+Color.m */,
+			);
+			name = "Generic Categories";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -535,7 +551,7 @@
 				4C685B221866286500ED860D /* main.m in Sources */,
 				4CC34FD2187A160800AD02E2 /* SREditableCell.m in Sources */,
 				4CC34FA6186CDFCD00AD02E2 /* SRCameraRollListViewController.m in Sources */,
-				4CC34FE3187A459500AD02E2 /* UIImage+SRColor.m in Sources */,
+				4CC34FE3187A459500AD02E2 /* UIImage+Color.m in Sources */,
 				4CC34FCF187A14AC00AD02E2 /* SRCreateRollCoordinator.m in Sources */,
 				4CC34FDC187A436100AD02E2 /* UIColor+SRColors.m in Sources */,
 				4CC34FA9186CF7D600AD02E2 /* SRCreateRollViewController.m in Sources */,

@@ -8,7 +8,7 @@
 
 #import "SRSegmentedControl.h"
 #import "UIColor+SRColors.h"
-#import "UIImage+SRColor.h"
+#import "UIImage+Color.h"
 #import "UIFont+SRFonts.h"
 
 @implementation SRSegmentedControl

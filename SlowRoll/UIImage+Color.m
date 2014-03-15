@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 SlowRoll. All rights reserved.
 //
 
-#import "UIImage+SRColor.h"
+#import "UIImage+Color.h"
 
-@implementation UIImage (SRColor)
+@implementation UIImage (Color)
 
 + (UIImage *)imageWithColor:(UIColor *)color {
     CGRect rect = CGRectMake(0, 0, 1, 1);

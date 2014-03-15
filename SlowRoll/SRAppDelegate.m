@@ -10,7 +10,7 @@
 #import "SRRestKitManager.h"
 #import <Crashlytics/Crashlytics.h>
 #import "SRCameraRollListViewController.h"
-#import "UIImage+SRColor.h"
+#import "UIImage+Color.h"
 #import "UIColor+SRColors.h"
 #import "UIFont+SRFonts.h"
 
